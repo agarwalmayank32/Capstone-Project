@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/items">
+
+   <TextView
+       android:text="@string/list_textView"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:id="@+id/txt"
+       android:layout_alignParentTop="true"
+       android:layout_centerHorizontal="true"
+       android:textColor="@android:color/holo_blue_dark"
+       android:layout_marginTop="20dp"
+       android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+
+   <ImageButton
+
+       android:layout_width="90dp"
+       android:layout_height="90dp"
+       android:id="@+id/aboutdev"
+       android:background="@drawable/devpic"
+       android:contentDescription="@string/aboutdevelopercontentdescription"
+       android:layout_alignTop="@+id/ufeatures"
+       android:layout_toRightOf="@+id/txt"
+       android:layout_toEndOf="@+id/txt" />
+
+   <TextView
+       android:text="@string/about_developer_textView"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:id="@+id/textViewaboutdev"
+       android:textColor="@android:color/holo_blue_bright"
+       android:layout_below="@+id/aboutdev"
+       android:layout_alignLeft="@+id/aboutdev"
+       android:layout_alignStart="@+id/aboutdev" />
+
+   <ImageButton
+
+       android:layout_width="90dp"
+       android:layout_height="90dp"
+       android:id="@+id/ufeatures"
+       android:background="@drawable/uf"
+       android:layout_marginTop="20dp"
+       android:contentDescription="@string/ufcontentdescription"
+       android:layout_below="@+id/txt"
+       android:layout_toLeftOf="@+id/txt"
+       android:layout_toStartOf="@+id/txt" />
+
+    <TextView
+        android:text="@string/upcoming_features_textView"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/ufText"
+        android:textColor="@android:color/holo_blue_bright"
+        android:layout_below="@+id/ufeatures"
+        android:layout_alignRight="@+id/ufeatures"
+        android:layout_alignEnd="@+id/ufeatures" />
+</RelativeLayout>

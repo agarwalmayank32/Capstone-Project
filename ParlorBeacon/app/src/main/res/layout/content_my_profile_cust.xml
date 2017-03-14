@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_my_profile_cust"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/app_bar_my_profile_cust">
+
+    <TextView
+        android:id="@+id/nameCust"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/emailCust"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/nameCust"
+        android:layout_marginTop="@dimen/activity_vertical_margin"/>
+
+    <TextView
+        android:id="@+id/phoneCust"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/emailCust"
+        android:layout_marginTop="@dimen/activity_vertical_margin"/>
+
+    <TextView
+        android:id="@+id/addressCust"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/phoneCust"
+        android:layout_marginTop="@dimen/activity_vertical_margin"/>
+
+    <TextView
+        android:id="@+id/genderCust"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/addressCust"
+        android:layout_marginTop="@dimen/activity_vertical_margin"/>
+    <TextView
+        android:id="@+id/cityCust"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/genderCust"
+        android:layout_marginTop="@dimen/activity_vertical_margin"/>
+
+    <TextView
+        android:id="@+id/zipCust"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/cityCust"
+        android:layout_marginTop="@dimen/activity_vertical_margin"/>
+
+
+</RelativeLayout>

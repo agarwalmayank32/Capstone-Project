@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_shop_details_shop"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="info.mayankag.parlorbeacon.ShopDetails"
+    tools:showIn="@layout/app_bar_shop_details">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/LLShopDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:contentDescription="@string/shopkeeper_image_content_description"
+                android:id="@+id/shopkeeperImage"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                app:border_color="#000000"
+                app:border_width="1dp"
+                android:src="@drawable/ic_npi"
+                android:onClick="onClickEditShopkeeperImage"/>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:contentDescription="@string/shop_front_image_content_description"
+                android:id="@+id/shopImage"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                app:border_color="#000000"
+                app:border_width="1dp"
+                android:src="@drawable/ic_nfi"
+                android:onClick="onClickEditShopImage" />
+
+        </RelativeLayout>
+
+        <ImageButton
+            android:contentDescription="@string/edit_shop_details_content_description"
+            android:id="@+id/editButton"
+            android:background="@drawable/ic_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/LLShopDetails"
+            android:onClick="onClickEditShopDetails"
+            android:layout_marginTop="@dimen/activity_vertical_margin"/>
+
+        <TextView
+            android:id="@+id/shopKeeperName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editButton"
+            android:text="@string/shopkeeper_name_text"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/activity_vertical_margin"/>
+
+        <TextView
+            android:id="@+id/shopName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/shopKeeperName"
+            android:text="@string/shop_name_text"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/activity_vertical_margin"/>
+
+        <TextView
+            android:id="@+id/shopKeeperEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/shopName"
+            android:text="@string/shopkeeper_email_id_text"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/activity_vertical_margin"/>
+
+        <TextView
+            android:id="@+id/shopPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/shopKeeperEmail"
+            android:text="@string/shop_phone_no_text"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/activity_vertical_margin"/>
+
+        <TextView
+            android:id="@+id/shopAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/shopPhone"
+            android:text="@string/shop_address_text"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/activity_vertical_margin"/>
+
+        <TextView
+            android:id="@+id/shopCity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/shopAddress"
+            android:text="@string/shop_city_text"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/activity_vertical_margin"/>
+
+        <TextView
+            android:id="@+id/shopZipCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/shopCity"
+            android:text="@string/shop_zip_code_text"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/activity_vertical_margin"/>
+
+        <TextView
+            android:id="@+id/shopOpenTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/shopZipCode"
+            android:text="@string/shop_open_time_text"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/activity_vertical_margin"/>
+
+        <TextView
+            android:id="@+id/shopCloseTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/shopOpenTime"
+            android:text="@string/shop_close_time_text"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/activity_vertical_margin"/>
+    </RelativeLayout>
+</ScrollView>

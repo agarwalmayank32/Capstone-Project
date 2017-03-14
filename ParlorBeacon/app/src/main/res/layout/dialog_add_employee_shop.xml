@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_margin="16dp">
+
+    <EditText
+        android:id="@+id/empNameAdd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:maxLines="1"
+        android:hint="@string/enter_employee_name_dialog_hint"/>
+
+    <EditText
+        android:id="@+id/empEmailAdd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/empNameAdd"
+        android:inputType="textEmailAddress"
+        android:maxLines="1"
+        android:hint="@string/enter_employee_email_dialog_hint"/>
+
+    <EditText
+        android:id="@+id/empPhoneAdd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/empEmailAdd"
+        android:inputType="phone"
+        android:maxLines="1"
+        android:hint="@string/enter_employee_phone_no_dialog_hint"/>
+
+    <EditText
+        android:id="@+id/empDesigAdd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/empPhoneAdd"
+        android:inputType="textMultiLine"
+        android:maxLines="1"
+        android:hint="@string/enter_employee_designation_dialog_hint"/>
+
+    <Button
+        android:id="@+id/empAddButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/empDesigAdd"
+        android:text="Add" />
+
+</RelativeLayout>

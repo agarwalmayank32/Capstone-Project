@@ -1,0 +1,278 @@
+<resources>
+
+    <string name="action_settings">Settings</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <!--AndroidManifest.xml-->
+    <string name="app_name">Parlor Beacon</string>
+    <string name="title_activity_main_screen_shop">Today\'s Schedule</string>
+    <string name="title_activity_my_bookings_shop">My Bookings</string>
+    <string name="title_activity_my_employees_shop">My Employees</string>
+    <string name="title_activity_services_shop">Services</string>
+    <string name="title_activity_shop_details_shop">Shop Details</string>
+    <string name="title_activity_about">About</string>
+    <string name="title_activity_contact_us">Contact us</string>
+    <string name="title_activity_edit_shop_details">Edit Shop Details</string>
+    <string name="title_activity_reset_password">Reset Password</string>
+
+    <!--LoginShop.java-->
+    <string name="login_shop_url">http://138.197.120.102/shopkeeper/login.php</string>
+    <string name="login_fetch_name_shop_url">http://138.197.120.102/shopkeeper/login_name.php</string>
+    <string name="invalid_email_text_shop">Please enter a valid email address</string>
+    <string name="invalid_password_text_shop">Please enter a password of minimum 8 characters</string>
+
+    <!--SignUpShop.java-->
+    <string name="signup_shop_url">http://138.197.120.102/shopkeeper/register.php</string>
+
+    <!--content_main_activity_shop.xml-->
+    <string name="log_in_button_mainactivity">Log in</string>
+    <string name="sign_up_button_mainactivity">Sign up</string>
+    <string name="upload_pictures_of_shop_and_shopkeeper_textview_mainactivity">Upload pictures of shop and shopkeeper</string>
+    <string name="upload_pic_contentDescription_mainactivity">Upload_Pic_MainActivity</string>
+    <string name="edit_shop_and_employee_details_textview_mainactivity">Edit shop and employee details</string>
+    <string name="edit_details_pic_contentDescription_mainactivity">Edit_Details_Pic_MainActivity</string>
+    <string name="view_bookings_of_services_textview_mainactivity">View Bookings of Services</string>
+    <string name="booking_pic_contentDescription_mainactivity">Booking_Pic_MainActivity</string>
+    <string name="logo_contentDescription_mainactivity">Logo_MainActivity</string>
+
+    <!--login_shop.xml-->
+    <string name="password_hint">Password</string>
+    <string name="email_hint">Email</string>
+    <string name="login_shop_button">Log in</string>
+    <string name="forgot_password_shop_button">Forgot Password?</string>
+
+    <!--signup_shop.xml-->
+    <string name="signup_shopkeeper_details">Shopkeeper Details</string>
+    <string name="signup_enter_shopkeeper_name">Enter Shopkeeper Name</string>
+    <string name="signup_enter_email_id">Enter Email id</string>
+    <string name="signup_enter_password">Enter Password</string>
+    <string name="signup_shop_details">Shop Details</string>
+    <string name="signup_enter_shop_name">Enter Shop Name</string>
+    <string name="signup_enter_shop_phone_no">Enter Shop Phone No</string>
+    <string name="signup_enter_shop_address">Enter Shop Address</string>
+    <string name="signup_enter_shop_city">Enter Shop City</string>
+    <string name="signup_enter_shop_zip_code">Enter Shop Zip Code</string>
+    <string name="signup_enter_shop_open_time">Enter Shop Open Time</string>
+    <string name="signup_enter_shop_close_time">Enter Shop Close Time</string>
+    <string name="accept_the_terms_and_conditions">I accept the <u>Terms and Conditions</u></string>
+    <string name="sign_up_shop_button">Sign Up</string>
+
+
+    <!--MainScreenShop.java-->
+    <string name="getTodayBooking_url">http://138.197.120.102/shopkeeper/gettodaybooking.php</string>
+
+    <!--content_main_screen_shop.xml-->
+    <string name="today_schedule_heading_text">Today\'s Schedule</string>
+    <string name="no_bookings_for_today_text">No Bookings For Today</string>
+
+    <!--drawer_shop.xml-->
+    <string name="today_s_schedule_option_drawer">Today\'s Schedule</string>
+    <string name="my_bookings_option_drawer">My Bookings</string>
+    <string name="my_employees_option_drawer">My Employees</string>
+    <string name="services_option_drawer">Services</string>
+    <string name="shop_details_option_drawer">Shop Details</string>
+    <string name="about_option_drawer">About</string>
+    <string name="contact_us_option_drawer">Contact us</string>
+
+    <!--booking_shop_adapter.xml-->
+    <string name="name_single_booking_shop_text">Name :</string>
+    <string name="service_single_booking_shop_text">Service :</string>
+    <string name="time_single_booking_shop_text">Time :</string>
+    <string name="icon_single_booking_shop">Booking Image Icon</string>
+
+    <!--MyBookingsShop.java-->
+    <string name="getBookingDetails_url">http://138.197.120.102/shopkeeper/getbooking.php</string>
+
+    <!--MyEmployeesShop.java-->
+    <string name="getEmployeeDetails_url">http://138.197.120.102/employee/getemployee.php</string>
+    <string name="addEmployeeDetails_url">http://138.197.120.102/employee/addemployee.php</string>
+
+    <!--content_my_employees_shop.xml-->
+    <string name="no_employees_to_show_text">No Employees to Show</string>
+
+    <!--employee_details_shop_adapter-->
+    <string name="name_employee_detail_shop_text">Name :</string>
+    <string name="email_employee_detail_shop_text">Email :</string>
+    <string name="phone_employee_detail_shop_text">Phone :</string>
+    <string name="designation_employee_detail_shop_text">Designation :</string>
+
+    <!--dialog_add_employee_shop.xml-->
+    <string name="enter_employee_name_dialog_hint">Enter Employee Name</string>
+    <string name="enter_employee_email_dialog_hint">Enter Employee Email</string>
+    <string name="enter_employee_phone_no_dialog_hint">Enter Employee Phone No.</string>
+    <string name="enter_employee_designation_dialog_hint">Enter Employee Designation</string>
+
+    <!--ServicesShop.java-->
+    <string name="getServiceDetails_url">"http://138.197.120.102/shopkeeper/ShowService.php</string>
+
+    <!--service_shop_adapter-->
+    <string name="service_name_shop_adapter">Service :</string>
+    <string name="time_taken_shop_adapter">Time Taken :</string>
+
+    <!--ServicesShop.java-->
+    <string name="addService_url">http://138.197.120.102/shopkeeper/AddService.php</string>
+
+    <!--ShopDetails.java-->
+    <string name="getDetails_url">http://138.197.120.102/shopkeeper/show.php</string>
+    <string name="getPic_url">http://138.197.120.102/shopkeeper/uploads/</string>
+    <string name="profilePicUpload_url">http://138.197.120.102/shopkeeper/uploads/uploadprofilepic.php</string>
+    <string name="frontPicUpload_url">http://138.197.120.102/shopkeeper/uploads/uploadfrontpic.php</string>
+
+    <!--content_shop_details.xml-->
+    <string name="shopkeeper_image_content_description">Shopkeeper Image</string>
+    <string name="shop_front_image_content_description">Shop Front Image</string>
+    <string name="edit_shop_details_content_description">Edit Shop Details</string>
+    <string name="shopkeeper_name_text">Shopkeeper\'s Name</string>
+    <string name="shop_name_text">Shop\'s Name</string>
+    <string name="shopkeeper_email_id_text">Shopkeeper\'s Email Id</string>
+    <string name="shop_phone_no_text">Shop Phone No.</string>
+    <string name="shop_address_text">Shop Address</string>
+    <string name="shop_city_text">Shop City</string>
+    <string name="shop_zip_code_text">Shop Zip Code</string>
+    <string name="shop_open_time_text">Shop\'s Open Time</string>
+    <string name="shop_close_time_text">Shop\'s Close Time</string>
+
+    <!--content_edit_shop_details.xml-->
+    <string name="edit_shopkeeper_details">Shopkeeper Details</string>
+    <string name="edit_shopkeeper_name">Shopkeeper Name</string>
+    <string name="edit_email_id">Email id</string>
+    <string name="edit_shop_details">Shop Details</string>
+    <string name="edit_shop_name">Shop Name</string>
+    <string name="edit_shop_phone_no">Shop Phone No</string>
+    <string name="edit_shop_address">Shop Address</string>
+    <string name="edit_shop_city">Shop City</string>
+    <string name="edit_shop_zip_code">Shop Zip Code</string>
+    <string name="edit_shop_open_time">Shop Open Time</string>
+    <string name="edit_shop_close_time">Shop Close Time</string>
+    <string name="update_shop_detail_button">Sign Up</string>
+
+    <!--EditShopDetails.java-->
+    <string name="updateDetails_url">http://138.197.120.102/shopkeeper/update.php</string>
+
+    <!--content_about.xml-->
+    <string name="about_text">A nice, sincere and hard working developer.</string>
+
+    <!--content_contact_us.xml-->
+    <string name="contact_name_text">Mayank Agarwal</string>
+    <string name="contact_email_text">agarwal.mayank32@gmail.com</string>
+    <string name="contact_phone_text">7064267601</string>
+
+    <!--AndroidManifest.xml-->
+    <string name="title_activity_main_screen_cust">Welcome</string>
+    <string name="title_activity_my_profile_cust">My Profile</string>
+    <string name="title_activity_my_bookings">Bookings</string>
+    <string name="title_activity_booking_cust">Booking Page</string>
+    <string name="title_activity_search_cust">Search</string>
+    <string name="title_activity_upcoming_features">Upcoming Features</string>
+
+    <!--LoginCust.java-->
+    <string name="login_cust_url">http://138.197.120.102/customer/Login.php</string>
+    <string name="login_fetch_name_cust_url">http://138.197.120.102/customer/LoginName.php</string>
+    <string name="invalid_email_text_cust">Please enter a valid email address</string>
+    <string name="invalid_password_text_cust">Please enter a password of minimum 8 characters</string>
+
+    <!--login_cust.xml-->
+    <string name="password_hint_cust">Password</string>
+    <string name="email_hint_cust">Email</string>
+    <string name="login_cust_button">Log in</string>
+
+    <!--SignUpCust.java-->
+    <string name="signup_cust_url">http://138.197.120.102/customer/SignUp.php</string>
+
+    <!--signup_cust.xml-->
+    <string name="signup_enter_cust_name">Enter Name</string>
+    <string name="signup_enter_email">Enter Email id</string>
+    <string name="signup_enter_password_cust">Enter Password</string>
+    <string name="signup_enter_cust_phone_no">Enter Phone No</string>
+    <string name="signup_enter_cust_address">Enter Address</string>
+    <string name="gender_label_text">Gender :</string>
+    <string name="male_label_text">Male</string>
+    <string name="female_label_text">Female</string>
+    <string name="others_label_text">Others</string>
+    <string name="accept_the_terms_and_conditions_cust">I accept the <u>Terms and Conditions</u></string>
+    <string name="sign_up_cust_button">Sign Up</string>
+
+    <!--content_main_cust.xml-->
+    <string name="main_logo_content_description">Main Logo Content Description</string>
+    <string name="search_feature_content_description">Search Feature Content Description</string>
+    <string name="search_feature_detail">View Services and Reviews of parlors around you</string>
+    <string name="bookmark_feature_content_description">Bookmark feature Content Description</string>
+    <string name="booking_feature_detail">Add parlors to visit in future to your Bookmarks</string>
+    <string name="sign_up_button_text">Sign up</string>
+    <string name="log_in_button_text">Log in</string>
+
+    <!--SearchActivityCust.java-->
+    <string name="search_cust_url">http://138.197.120.102/customer/Search.php</string>
+
+    <!--SelectedShopDetails.java-->
+    <string name="selected_shop_details_url">http://138.197.120.102/customer/SelectedShopDetails.php</string>
+
+    <!--activity_selected_shop_details.xml-->
+    <string name="book_now_button_text">Book Now</string>
+
+    <!--ServiceSelectCust.java-->
+    <string name="service_select_url">http://138.197.120.102/customer/SelectedShopServiceDetails.php</string>
+    <string name="get_available_time_url">http://138.197.120.102/customer/GetBookingTimeAvailable.php</string>
+
+    <!--BookingActivityCust.java-->
+    <string name="booking_cust_url">http://138.197.120.102/customer/Booking.php</string>
+    <string name="error_contact_developer_message">Failed due to some error. Please contact the developer.</string>
+
+    <!--content_booking_activity_cust.xml-->
+    <string name="name_hint_booking_cust">Name</string>
+    <string name="email_hint_booking_cust">Email</string>
+    <string name="phone_hint_booking_cust">Phone</string>
+    <string name="book_button_booking_cust">Book</string>
+    <string name="date_hint_booking_cust">Date</string>
+    <string name="time_hint_booking_cust">Time</string>
+
+    <!--activity_booking_success_cust.xml-->
+    <string name="booking_successful_message">Booking Successfully Done</string>
+
+    <!--activity_main_drawer.xml-->
+    <string name="search_services_title">Search Services</string>
+    <string name="my_bookings_title">My Bookings</string>
+    <string name="my_profile_title">My Profile</string>
+    <string name="uf_title">Upcoming Features</string>
+    <string name="log_out_title">Log Out</string>
+
+    <!--Common Nav-header-->
+    <string name="welcome_to_parlor_beacon_nav_header">Welcome to Parlor Beacon</string>
+
+    <!--UpcomingFeatures.java-->
+    <string name="uf_url">http://138.197.120.102/customer/uf.txt</string>
+
+    <!--MyBookingsCust.java-->
+    <string name="booking_fetch_url">http://138.197.120.102/customer/getBookings.php</string>
+
+    <!--MyProfileCust.java-->
+    <string name="profile_fetch_url">http://138.197.120.102/customer/getCustomerDetails.php</string>
+
+    <!--MainScreenCust.java-->
+    <string name="fetch_all_services_url">http://138.197.120.102/customer/getAllServices.php</string>
+
+    <!--simple_widget.xml-->
+    <string name="list_textView">List</string>
+    <string name="aboutdevelopercontentdescription">AboutDeveloperContentDescription</string>
+    <string name="about_developer_textView">About Developer</string>
+    <string name="ufcontentdescription">UFContentDescription</string>
+    <string name="upcoming_features_textView">Upcoming Features</string>
+
+    <!--aboutdev_dev.xml-->
+    <string name="devName">Mayank Agarwal</string>
+    <string name="devEmail">agarwal.mayank32@gmail.com</string>
+    <string name="devPhone">7064267601</string>
+    <string name="welcome_to_parlor_beacon">Welcome to Parlor Beacon</string>
+
+    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="add_button_dialog_add_service_shop">Add</string>
+
+    <string-array name="serviceDuration">
+        <item>Select Duration</item>
+        <item>30 min</item>
+        <item>45 min</item>
+        <item>60 min</item>
+    </string-array>
+
+</resources>

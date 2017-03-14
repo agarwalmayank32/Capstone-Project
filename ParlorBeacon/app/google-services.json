@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "540034686850",
+    "firebase_url": "https://parlorbeacon-7c3e7.firebaseio.com",
+    "project_id": "parlorbeacon-7c3e7",
+    "storage_bucket": "parlorbeacon-7c3e7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:540034686850:android:7bc62bf08103cb96",
+        "android_client_info": {
+          "package_name": "info.mayankag.parlorbeacon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "540034686850-g4b5l3uqnfup92gfvdebe7i4f380f0sk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "info.mayankag.parlorbeacon",
+            "certificate_hash": "0aedbe73edd0c3045fcf3107376d8924f27af3ce"
+          }
+        },
+        {
+          "client_id": "540034686850-gjc4t5sn2p6db7kl17qbevhsj8sjue1h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "info.mayankag.parlorbeacon",
+            "certificate_hash": "7a5ce90c3b0a3b103c51aa6d83264a2c01bf858e"
+          }
+        },
+        {
+          "client_id": "540034686850-56v07hbalha1mrkv6f3ogvsqu7gl2ce9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkr_3jZ7hsg4ejfyd_NMB2YeWzjHW2krk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "540034686850-56v07hbalha1mrkv6f3ogvsqu7gl2ce9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

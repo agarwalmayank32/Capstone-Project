@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_margin="16dp">
+
+    <EditText
+        android:id="@+id/serviceNameAdd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:hint=""/>
+
+    <Spinner
+        android:id="@+id/serviceDurationAdd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/serviceNameAdd"
+        android:entries="@array/serviceDuration"/>
+
+    <Button
+        android:id="@+id/serviceAddButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/serviceDurationAdd"
+        android:text="@string/add_button_dialog_add_service_shop" />
+
+</RelativeLayout>
