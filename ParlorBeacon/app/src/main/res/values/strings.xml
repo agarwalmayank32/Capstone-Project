@@ -292,6 +292,8 @@
     <string name="service_add_success_text">Service Add Successfully</string>
     <string name="service_add_fail_text">Service Could Not be Added due to some problem. Please Try Again.</string>
     <string name="pic_upload_success_text">Pic Uploaded</string>
+    <string name="update_success_text">Successfully Updated</string>
+    <string name="update_fail_text">"Sorry Details cannot be updated "</string>
 
     <string-array name="serviceDuration">
         <item>Select Duration</item>

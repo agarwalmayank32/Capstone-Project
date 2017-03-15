@@ -121,11 +121,11 @@ public class EditShopDetails extends AppCompatActivity {
                     progressDialog.dismiss();
                     try {
                         if (response.equalsIgnoreCase("success")) {
-                            Toast.makeText(EditShopDetails.this, "Successfully Updated", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(EditShopDetails.this, R.string.update_success_text, Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(EditShopDetails.this, ShopDetails.class));
                             finish();
                         } else if (response.equalsIgnoreCase("failed")) {
-                            Toast.makeText(EditShopDetails.this, "Sorry Details cannot be updated ", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(EditShopDetails.this, R.string.update_fail_text, Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(EditShopDetails.this, "Error", Toast.LENGTH_LONG).show();
                         }
