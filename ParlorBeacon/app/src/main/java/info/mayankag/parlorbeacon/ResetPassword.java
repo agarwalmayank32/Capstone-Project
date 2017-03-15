@@ -15,8 +15,7 @@ public class ResetPassword extends AppCompatActivity {
         setSupportActionBar(toolbar);
     }
 
-    public void onClickPassChange(View view)
-    {
+    public void onClickPassChange(View view) {
 
     }
 

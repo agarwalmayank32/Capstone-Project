@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="info.mayankag.parlorbeacon">
+          package="info.mayankag.parlorbeacon">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
-    <uses-permission-sdk-23 android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission-sdk-23 android:name="android.permission.INTERNET" />
+    <uses-permission-sdk-23 android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission-sdk-23 android:name="android.permission.INTERNET"/>
 
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
     <application
@@ -31,56 +31,57 @@
         <activity
             android:name=".MainScreenShop"
             android:label="@string/title_activity_main_screen_shop"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".MyBookingsShop"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/title_activity_my_bookings_shop"
             android:screenOrientation="sensorPortrait"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".MyEmployeesShop"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/title_activity_my_employees_shop"
             android:screenOrientation="sensorPortrait"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".ServicesShop"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/title_activity_services_shop"
             android:screenOrientation="sensorPortrait"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".ShopDetails"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/title_activity_shop_details_shop"
             android:screenOrientation="sensorPortrait"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".About"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/title_activity_about"
             android:screenOrientation="sensorPortrait"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".ContactUs"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/title_activity_contact_us"
             android:screenOrientation="sensorPortrait"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".EditShopDetails"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/title_activity_edit_shop_details"
             android:screenOrientation="sensorPortrait"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".ResetPassword"
             android:label="@string/title_activity_reset_password"
             android:theme="@style/AppTheme.NoActionBar"/>
+
         <meta-data
             android:name="io.fabric.ApiKey"
-            android:value="223f7347dec181bbc2fa2e8a4d5647a3d7aaa7fd" />
+            android:value="223f7347dec181bbc2fa2e8a4d5647a3d7aaa7fd"/>
 
         <activity
             android:name=".Customer"
@@ -90,32 +91,32 @@
         <activity
             android:name=".MainScreenCust"
             android:label="@string/title_activity_main_screen_cust"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".SearchActivityCust"
             android:label="@string/title_activity_search_cust"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".BookingActivityCust"
             android:label="@string/title_activity_booking_cust"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".BookingSuccessCust" />
-        <activity android:name=".ServiceSelectCust" />
-        <activity android:name=".SelectedShopDetails" />
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".BookingSuccessCust"/>
+        <activity android:name=".ServiceSelectCust"/>
+        <activity android:name=".SelectedShopDetails"/>
         <activity
             android:name=".MyProfileCust"
             android:label="@string/title_activity_my_profile_cust"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".MyBookingsCust"
             android:label="@string/title_activity_my_bookings"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"/>
 
         <provider
             android:name=".Database.DBContentProvider"
             android:authorities="com.sringboardtechsolutions.parlorbeaconcustomerside.Database.DBContentProvider"
             android:exported="false"
-            android:multiprocess="true" />
+            android:multiprocess="true"/>
 
         <activity
             android:name=".UpcomingFeatures"
@@ -127,12 +128,12 @@
             android:name=".SimpleWidgetProvider"
             android:label="Parlor Beacon">
             <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
             </intent-filter>
 
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/simple_widget_info" />
+                android:resource="@xml/simple_widget_info"/>
         </receiver>
 
     </application>

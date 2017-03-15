@@ -31,7 +31,7 @@ import java.util.Map;
 import info.mayankag.parlorbeacon.Adapter.SearchAdapter;
 import info.mayankag.parlorbeacon.Models.Search;
 
-public class SearchActivityCust extends AppCompatActivity{
+public class SearchActivityCust extends AppCompatActivity {
 
     private ArrayList<Search> mSearches;
     private ArrayAdapter<Search> mSearchArrayAdapter;
@@ -45,22 +45,20 @@ public class SearchActivityCust extends AppCompatActivity{
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        textView = (TextView)findViewById(R.id.noShopText);
-        searchListView = (ListView)findViewById(R.id.searchListView);
+        textView = (TextView) findViewById(R.id.noShopText);
+        searchListView = (ListView) findViewById(R.id.searchListView);
         mSearches = new ArrayList<>();
 
         Bundle bundle = getIntent().getExtras();
-        if(bundle!=null) {
+        if (bundle != null) {
             search(bundle.getString("Key"));
         }
     }
 
-    private void search(String key)
-    {
-        if(!UtilsCust.isNetworkAvailable(this)) {
+    private void search(String key) {
+        if (!UtilsCust.isNetworkAvailable(this)) {
             UtilsCust.NetworkToast(this);
-        }
-        else {
+        } else {
 
             JSONObject params = new JSONObject();
             try {
@@ -69,9 +67,9 @@ public class SearchActivityCust extends AppCompatActivity{
                 e.printStackTrace();
             }
 
-            String search_cust_url = getResources().getString(R.string.search_cust_url) ;
+            String search_cust_url = getResources().getString(R.string.search_cust_url);
 
-            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, search_cust_url,params, new Response.Listener<JSONObject>() {
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, search_cust_url, params, new Response.Listener<JSONObject>() {
                 @SuppressLint("SetTextI18n")
                 @Override
                 public void onResponse(JSONObject response) {
@@ -79,10 +77,10 @@ public class SearchActivityCust extends AppCompatActivity{
                     textView.setVisibility(View.GONE);
                     searchListView.setVisibility(View.VISIBLE);
                     try {
-                        JSONArray detail=response.getJSONArray("data");
-                        String name,rating,address,email;
+                        JSONArray detail = response.getJSONArray("data");
+                        String name, rating, address, email;
 
-                        if(detail.length()>0) {
+                        if (detail.length() > 0) {
                             for (int i = 0; i < detail.length(); i++) {
                                 JSONObject singledetail = detail.getJSONObject(i);
 
@@ -90,29 +88,26 @@ public class SearchActivityCust extends AppCompatActivity{
                                 rating = singledetail.getString("shoprating");
                                 address = singledetail.getString("shopaddress");
                                 email = singledetail.getString("email");
-                                mSearches.add(new Search(name,rating,address,email));
+                                mSearches.add(new Search(name, rating, address, email));
                             }
-                            mSearchArrayAdapter = new SearchAdapter(SearchActivityCust.this,mSearches);
+                            mSearchArrayAdapter = new SearchAdapter(SearchActivityCust.this, mSearches);
                             searchListView.setAdapter(mSearchArrayAdapter);
                             searchListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                 @Override
                                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                                    Intent intent = new Intent(SearchActivityCust.this,SelectedShopDetails.class);
-                                    intent.putExtra("ShopName",mSearches.get(i).getName());
-                                    intent.putExtra("ShopEmail",mSearches.get(i).getEmail());
+                                    Intent intent = new Intent(SearchActivityCust.this, SelectedShopDetails.class);
+                                    intent.putExtra("ShopName", mSearches.get(i).getName());
+                                    intent.putExtra("ShopEmail", mSearches.get(i).getEmail());
                                     startActivity(intent);
                                 }
                             });
 
-                        }
-                        else
-                        {
+                        } else {
                             textView.setText("This service is not available by any shop.");
                             textView.setVisibility(View.VISIBLE);
                             searchListView.setVisibility(View.GONE);
                         }
-                    }
-                    catch (JSONException e) {
+                    } catch (JSONException e) {
                         Toast.makeText(SearchActivityCust.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                         e.printStackTrace();
                     }

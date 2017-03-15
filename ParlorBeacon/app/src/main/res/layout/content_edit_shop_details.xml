@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_edit_shop_details"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -23,121 +23,121 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:paddingLeft="4dp"
-            android:paddingStart="4dp"
-            android:paddingRight="4dp"
             android:paddingEnd="4dp"
-            android:text="@string/edit_shopkeeper_details" />
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:paddingStart="4dp"
+            android:text="@string/edit_shopkeeper_details"/>
 
         <EditText
-            android:inputType="textPersonName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginTop="16dp"
             android:id="@+id/edit_shop_shopkeeperName"
-            android:maxLines="1"
-            android:hint="@string/edit_shopkeeper_name"/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_weight="1"
+            android:hint="@string/edit_shopkeeper_name"
+            android:inputType="textPersonName"
+            android:maxLines="1"/>
 
         <EditText
-            android:inputType="textEmailAddress"
+            android:id="@+id/edit_shop_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:id="@+id/edit_shop_email"
-            android:maxLines="1"
-            android:hint="@string/edit_email_id"/>
+            android:hint="@string/edit_email_id"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:paddingLeft="4dp"
-            android:paddingStart="4dp"
-            android:paddingRight="4dp"
             android:paddingEnd="4dp"
-            android:text="@string/edit_shop_details" />
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:paddingStart="4dp"
+            android:text="@string/edit_shop_details"/>
 
         <EditText
-            android:inputType="textPersonName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginTop="16dp"
             android:id="@+id/edit_shop_name"
-            android:maxLines="1"
-            android:hint="@string/edit_shop_name"/>
-
-        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:layout_weight="1"
+            android:hint="@string/edit_shop_name"
+            android:inputType="textPersonName"
+            android:maxLines="1"/>
+
+        <EditText
             android:id="@+id/edit_shop_phone"
-            android:maxLines="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/edit_shop_phone_no"
             android:inputType="phone"
-            android:hint="@string/edit_shop_phone_no"/>
+            android:maxLines="1"/>
 
 
         <EditText
-            android:inputType="textPostalAddress"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:id="@+id/edit_shop_address"
-            android:maxLines="1"
-            android:hint="@string/edit_shop_address"/>
-
-        <EditText
-            android:inputType="text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:hint="@string/edit_shop_address"
+            android:inputType="textPostalAddress"
+            android:maxLines="1"/>
+
+        <EditText
             android:id="@+id/edit_shop_city"
-            android:maxLines="1"
-            android:hint="@string/edit_shop_city"/>
-
-        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:hint="@string/edit_shop_city"
+            android:inputType="text"
+            android:maxLines="1"/>
+
+        <EditText
             android:id="@+id/edit_shop_zip"
-            android:maxLines="1"
-            android:inputType="number"
-            android:hint="@string/edit_shop_zip_code"/>
-
-        <EditText
-            android:focusable="false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:hint="@string/edit_shop_zip_code"
+            android:inputType="number"
+            android:maxLines="1"/>
+
+        <EditText
             android:id="@+id/edit_shop_openTime"
-            android:maxLines="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:layout_weight="1"
+            android:focusable="false"
             android:hint="@string/edit_shop_open_time"
+            android:maxLines="1"
             android:onClick="onClickOpenTimeEdit"/>
 
         <EditText
-            android:focusable="false"
+            android:id="@+id/edit_shop_closeTime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:id="@+id/edit_shop_closeTime"
-            android:maxLines="1"
+            android:focusable="false"
             android:hint="@string/edit_shop_close_time"
+            android:maxLines="1"
             android:onClick="onClickCloseTimeEdit"/>
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/edit_shop_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginLeft="40dp"
             android:layout_marginEnd="40dp"
+            android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
+            android:layout_marginStart="40dp"
             android:background="@drawable/edit_button_shop"
+            android:onClick="onClickUpdateDetail"
             android:text="@string/update_shop_detail_button"
-            android:textColor="@color/white"
-            android:onClick="onClickUpdateDetail"/>
+            android:textColor="@color/white"/>
     </LinearLayout>
 
 </ScrollView>

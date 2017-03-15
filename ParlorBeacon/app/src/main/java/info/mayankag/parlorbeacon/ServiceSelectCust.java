@@ -2,8 +2,8 @@ package info.mayankag.parlorbeacon;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -42,24 +42,22 @@ public class ServiceSelectCust extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_service_select_cust);
 
-        selectServiceNameDropdown = (Spinner)findViewById(R.id.serviceNameSelect);
-        selectServiceTimeDropdown = (Spinner)findViewById(R.id.serviceTimeSelect);
+        selectServiceNameDropdown = (Spinner) findViewById(R.id.serviceNameSelect);
+        selectServiceTimeDropdown = (Spinner) findViewById(R.id.serviceTimeSelect);
         selectServiceTimeDropdown.setEnabled(false);
         serviceName = new ArrayList<>();
         serviceTime = new ArrayList<>();
 
         Bundle extras = getIntent().getExtras();
-        if(extras!=null)
-        {
-            email=extras.getString("ShopEmail");
+        if (extras != null) {
+            email = extras.getString("ShopEmail");
             fetchServices();
         }
 
         selectServiceNameDropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                if(i!=0)
-                {
+                if (i != 0) {
                     selectServiceName = serviceName.get(i);
                     fetchTimeAvailable();
                 }
@@ -74,13 +72,12 @@ public class ServiceSelectCust extends AppCompatActivity {
         selectServiceTimeDropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                if(i!=0)
-                {
+                if (i != 0) {
                     selectServiceTime = serviceTime.get(i);
-                    Intent intent = new Intent(ServiceSelectCust.this,BookingActivityCust.class);
-                    intent.putExtra("ServiceName",selectServiceName);
-                    intent.putExtra("ServiceTime",selectServiceTime);
-                    intent.putExtra("ShopEmail",email);
+                    Intent intent = new Intent(ServiceSelectCust.this, BookingActivityCust.class);
+                    intent.putExtra("ServiceName", selectServiceName);
+                    intent.putExtra("ServiceTime", selectServiceTime);
+                    intent.putExtra("ShopEmail", email);
                     startActivity(intent);
                     finish();
                 }
@@ -93,12 +90,10 @@ public class ServiceSelectCust extends AppCompatActivity {
         });
     }
 
-    private void fetchServices()
-    {
-        if(!UtilsCust.isNetworkAvailable(this)) {
+    private void fetchServices() {
+        if (!UtilsCust.isNetworkAvailable(this)) {
             UtilsCust.NetworkToast(this);
-        }
-        else {
+        } else {
             JSONObject params = new JSONObject();
             try {
                 params.put("email", email);
@@ -108,7 +103,7 @@ public class ServiceSelectCust extends AppCompatActivity {
 
             String service_select_url = getResources().getString(R.string.service_select_url);
 
-            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, service_select_url ,params, new Response.Listener<JSONObject>() {
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, service_select_url, params, new Response.Listener<JSONObject>() {
                 @SuppressLint("SetTextI18n")
                 @Override
                 public void onResponse(JSONObject response) {
@@ -127,8 +122,7 @@ public class ServiceSelectCust extends AppCompatActivity {
                             //dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                             selectServiceNameDropdown.setAdapter(dataAdapter);
                         }
-                    }
-                    catch (JSONException e) {
+                    } catch (JSONException e) {
                         Toast.makeText(ServiceSelectCust.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                         e.printStackTrace();
                     }
@@ -154,10 +148,9 @@ public class ServiceSelectCust extends AppCompatActivity {
 
     private void fetchTimeAvailable() {
         selectServiceTimeDropdown.setEnabled(false);
-        if(!UtilsCust.isNetworkAvailable(this)) {
+        if (!UtilsCust.isNetworkAvailable(this)) {
             UtilsCust.NetworkToast(this);
-        }
-        else {
+        } else {
             JSONObject params = new JSONObject();
             try {
                 params.put("shopemail", email);
@@ -167,7 +160,7 @@ public class ServiceSelectCust extends AppCompatActivity {
 
             String get_available_time_url = getResources().getString(R.string.get_available_time_url);
 
-            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, get_available_time_url ,params, new Response.Listener<JSONObject>() {
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, get_available_time_url, params, new Response.Listener<JSONObject>() {
                 @SuppressLint("SetTextI18n")
                 @Override
                 public void onResponse(JSONObject response) {
@@ -188,8 +181,7 @@ public class ServiceSelectCust extends AppCompatActivity {
                             selectServiceTimeDropdown.setAdapter(dataAdapter);
                             selectServiceTimeDropdown.setEnabled(true);
                         }
-                    }
-                    catch (JSONException e) {
+                    } catch (JSONException e) {
                         Toast.makeText(ServiceSelectCust.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                         e.printStackTrace();
                     }

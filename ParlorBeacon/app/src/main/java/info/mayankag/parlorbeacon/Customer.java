@@ -12,10 +12,10 @@ import android.widget.RelativeLayout;
 
 public class Customer extends AppCompatActivity {
 
-    private FragmentManager fragmentManager;
-
     @SuppressLint("StaticFieldLeak")
     static RelativeLayout relativeLayout;
+
+    private FragmentManager fragmentManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,14 +25,12 @@ public class Customer extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
-
-        if(!UtilsCust.loadCustEmail(this).equals(""))
-        {
-            startActivity(new Intent(this,MainScreenCust.class));
+        if (!UtilsCust.loadCustEmail(this).equals("")) {
+            startActivity(new Intent(this, MainScreenCust.class));
             finish();
         }
 
-        relativeLayout = (RelativeLayout)findViewById(R.id.content_main);
+        relativeLayout = (RelativeLayout) findViewById(R.id.content_main);
 
     }
 

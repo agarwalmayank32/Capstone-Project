@@ -35,8 +35,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SignUpShop extends DialogFragment
-{
+public class SignUpShop extends DialogFragment {
 
     private EditText shopkeeperNameText;
     private EditText emailText;
@@ -54,7 +53,7 @@ public class SignUpShop extends DialogFragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.signup_shop, container, false);
-        Toolbar toolbar = (Toolbar)v.findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) v.findViewById(R.id.toolbar);
         toolbar.setTitle("Signup");
 
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
@@ -67,20 +66,20 @@ public class SignUpShop extends DialogFragment
         }
         setHasOptionsMenu(true);
 
-        shopkeeperNameText = (EditText)v.findViewById(R.id.signup_shop_shopkeeperName);
-        emailText = (EditText)v.findViewById(R.id.signup_shop_email);
-        passText = (EditText)v.findViewById(R.id.signup_shop_pass);
+        shopkeeperNameText = (EditText) v.findViewById(R.id.signup_shop_shopkeeperName);
+        emailText = (EditText) v.findViewById(R.id.signup_shop_email);
+        passText = (EditText) v.findViewById(R.id.signup_shop_pass);
 
-        shopNameText = (EditText)v.findViewById(R.id.signup_shop_name);
-        shopPhoneText = (EditText)v.findViewById(R.id.signup_shop_phone);
-        shopAddressText = (EditText)v.findViewById(R.id.signup_shop_address);
-        shopCityText = (EditText)v.findViewById(R.id.signup_shop_city);
-        shopZipText = (EditText)v.findViewById(R.id.signup_shop_zip);
-        shopOpenTimeText = (EditText)v.findViewById(R.id.signup_shop_openTime);
-        shopCloseTimeText = (EditText)v.findViewById(R.id.signup_shop_closeTime);
+        shopNameText = (EditText) v.findViewById(R.id.signup_shop_name);
+        shopPhoneText = (EditText) v.findViewById(R.id.signup_shop_phone);
+        shopAddressText = (EditText) v.findViewById(R.id.signup_shop_address);
+        shopCityText = (EditText) v.findViewById(R.id.signup_shop_city);
+        shopZipText = (EditText) v.findViewById(R.id.signup_shop_zip);
+        shopOpenTimeText = (EditText) v.findViewById(R.id.signup_shop_openTime);
+        shopCloseTimeText = (EditText) v.findViewById(R.id.signup_shop_closeTime);
 
-        agree = (CheckBox)v.findViewById(R.id.acceptTC);
-        signup = (Button)v.findViewById(R.id.signup_shop_button);
+        agree = (CheckBox) v.findViewById(R.id.acceptTC);
+        signup = (Button) v.findViewById(R.id.signup_shop_button);
 
         shopOpenTimeText.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,11 +92,11 @@ public class SignUpShop extends DialogFragment
                     @Override
                     public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
                         String openTime;
-                        if(selectedHour>12) {
-                            openTime = String.valueOf(selectedHour-12)+":"+ String.valueOf(selectedMinute) + "PM";
+                        if (selectedHour > 12) {
+                            openTime = String.valueOf(selectedHour - 12) + ":" + String.valueOf(selectedMinute) + "PM";
                             shopOpenTimeText.setText(openTime);
                         } else {
-                            openTime = String.valueOf(selectedHour)+":"+ String.valueOf(selectedMinute) + "AM";
+                            openTime = String.valueOf(selectedHour) + ":" + String.valueOf(selectedMinute) + "AM";
                             shopOpenTimeText.setText(openTime);
                         }
                     }
@@ -118,11 +117,11 @@ public class SignUpShop extends DialogFragment
                     @Override
                     public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
                         String closeTime;
-                        if(selectedHour>12) {
-                            closeTime = String.valueOf(selectedHour-12)+":"+ String.valueOf(selectedMinute) + "PM";
+                        if (selectedHour > 12) {
+                            closeTime = String.valueOf(selectedHour - 12) + ":" + String.valueOf(selectedMinute) + "PM";
                             shopCloseTimeText.setText(closeTime);
                         } else {
-                            closeTime = String.valueOf(selectedHour)+":"+ String.valueOf(selectedMinute) + "AM";
+                            closeTime = String.valueOf(selectedHour) + ":" + String.valueOf(selectedMinute) + "AM";
                             shopCloseTimeText.setText(closeTime);
                         }
                     }
@@ -142,8 +141,7 @@ public class SignUpShop extends DialogFragment
         return v;
     }
 
-    private void signup()
-    {
+    private void signup() {
         if (!UtilsShop.isNetworkAvailable(getActivity())) {
             UtilsShop.NetworkToast(getActivity());
         } else {
@@ -160,15 +158,15 @@ public class SignUpShop extends DialogFragment
             final String shopclose = shopCloseTimeText.getText().toString();
 
             if (shopkeepername.equals("") || shopname.equals("") || shopemail.equals("") || shoppass.equals("") || shopphone.equals("") || shopaddr.equals("") || shopcity.equals("") || shopzip.equals("") || shopopen.equals("") || shopclose.equals("")) {
-                UtilsShop.ShortToast(getActivity(), "Please enter all the Details");
+                UtilsShop.ShortToast(getActivity(), getString(R.string.enter_all_detail_text));
             } else if (!agree.isChecked()) {
-                UtilsShop.ShortToast(getActivity(), "Please agree with Terms and Conditions");
+                UtilsShop.ShortToast(getActivity(), getString(R.string.terms_and_conditions_text));
             } else {
                 if (!shopemail.contains("@") && !shopemail.contains(".com")) {
-                    UtilsShop.ShortToast(getActivity(), "Please enter a valid email address");
+                    UtilsShop.ShortToast(getActivity(), getString(R.string.valid_email_text));
                 } else {
                     if (!(shoppass.length() > 8)) {
-                        UtilsShop.ShortToast(getActivity(), "Please Enter Password greater than 8 character");
+                        UtilsShop.ShortToast(getActivity(), getString(R.string.valid_password_text));
                     } else {
                         String signup_url = getResources().getString(R.string.signup_shop_url);
                         final ProgressDialog progressDialog = ProgressDialog.show(getActivity(), "Signing Up", "Please Wait", true, true);
@@ -179,20 +177,19 @@ public class SignUpShop extends DialogFragment
                                 try {
 
                                     if (response.equalsIgnoreCase(String.valueOf(0))) {
-                                        UtilsShop.saveShopEmail(shopemail,getActivity());
-                                        UtilsShop.saveShopkeeperName(shopkeepername,getActivity());
+                                        UtilsShop.saveShopEmail(shopemail, getActivity());
+                                        UtilsShop.saveShopkeeperName(shopkeepername, getActivity());
                                         startActivity(new Intent(getActivity(), MainScreenShop.class));
                                         getActivity().finish();
                                     } else if (response.equalsIgnoreCase(String.valueOf(1))) {
-                                        UtilsShop.ShortToast(getActivity(), "Sorry You have Already Registered Yet");
+                                        UtilsShop.ShortToast(getActivity(), getString(R.string.already_registered_text));
                                     } else if (response.equalsIgnoreCase(String.valueOf(2))) {
-                                        UtilsShop.ShortToast(getActivity(), "Something missing");
-                                    } else
-                                    {
+                                        UtilsShop.ShortToast(getActivity(), getString(R.string.error_text));
+                                    } else {
                                         UtilsShop.ShortToast(getActivity(), response);
                                     }
                                 } catch (Exception e) {
-                                    UtilsShop.ShortToast(getActivity(), "Error");
+                                    UtilsShop.ShortToast(getActivity(), getString(R.string.error1_text));
                                 }
                             }
                         }, new Response.ErrorListener() {

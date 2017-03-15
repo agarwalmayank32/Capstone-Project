@@ -31,7 +31,7 @@ import java.util.Map;
 
 public class MyProfileCust extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    TextView name,email,phone,gender,address,city,zip;
+    TextView name, email, phone, gender, address, city, zip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,13 +40,13 @@ public class MyProfileCust extends AppCompatActivity implements NavigationView.O
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        name = (TextView)findViewById(R.id.nameCust);
-        email = (TextView)findViewById(R.id.emailCust);
-        phone = (TextView)findViewById(R.id.phoneCust);
-        gender = (TextView)findViewById(R.id.genderCust);
-        address = (TextView)findViewById(R.id.addressCust);
-        city = (TextView)findViewById(R.id.cityCust);
-        zip = (TextView)findViewById(R.id.zipCust);
+        name = (TextView) findViewById(R.id.nameCust);
+        email = (TextView) findViewById(R.id.emailCust);
+        phone = (TextView) findViewById(R.id.phoneCust);
+        gender = (TextView) findViewById(R.id.genderCust);
+        address = (TextView) findViewById(R.id.addressCust);
+        city = (TextView) findViewById(R.id.cityCust);
+        zip = (TextView) findViewById(R.id.zipCust);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -57,12 +57,11 @@ public class MyProfileCust extends AppCompatActivity implements NavigationView.O
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        
+
         profileFetch();
     }
 
-    void profileFetch()
-    {
+    void profileFetch() {
         JSONObject params = new JSONObject();
         try {
             params.put("custemail", UtilsCust.loadCustEmail(this));
@@ -70,16 +69,16 @@ public class MyProfileCust extends AppCompatActivity implements NavigationView.O
             e.printStackTrace();
         }
 
-        String profile_fetch_url = getResources().getString(R.string.profile_fetch_url) ;
+        String profile_fetch_url = getResources().getString(R.string.profile_fetch_url);
 
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, profile_fetch_url,params, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, profile_fetch_url, params, new Response.Listener<JSONObject>() {
             @SuppressLint("SetTextI18n")
             @Override
             public void onResponse(JSONObject response) {
                 try {
-                    JSONArray detail=response.getJSONArray("custdetails");
+                    JSONArray detail = response.getJSONArray("custdetails");
 
-                    if(detail.length()>0) {
+                    if (detail.length() > 0) {
                         for (int i = 0; i < detail.length(); i++) {
                             JSONObject singledetail = detail.getJSONObject(i);
 
@@ -92,8 +91,7 @@ public class MyProfileCust extends AppCompatActivity implements NavigationView.O
                             zip.setText(singledetail.getString("zip"));
                         }
                     }
-                }
-                catch (JSONException e) {
+                } catch (JSONException e) {
                     Toast.makeText(MyProfileCust.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
                 }
@@ -136,7 +134,7 @@ public class MyProfileCust extends AppCompatActivity implements NavigationView.O
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        UtilsCust.onNaviationItemSelected(this,item);
+        UtilsCust.onNaviationItemSelected(this, item);
         return true;
     }
 }

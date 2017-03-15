@@ -16,10 +16,9 @@ import io.fabric.sdk.android.Fabric;
 
 public class Shopkeeper extends AppCompatActivity {
 
-    private FragmentManager fragmentManager;
-
     @SuppressLint("StaticFieldLeak")
     static RelativeLayout relativeLayout;
+    private FragmentManager fragmentManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,9 +28,8 @@ public class Shopkeeper extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        if(!UtilsShop.loadShopEmail(this).equals(""))
-        {
-            startActivity(new Intent(this,MainScreenShop.class));
+        if (!UtilsShop.loadShopEmail(this).equals("")) {
+            startActivity(new Intent(this, MainScreenShop.class));
             finish();
         }
 
@@ -46,8 +44,7 @@ public class Shopkeeper extends AppCompatActivity {
         Shopkeeper.relativeLayout.setVisibility(View.VISIBLE);
     }
 
-    public void onClickShopSignUp(View view)
-    {
+    public void onClickShopSignUp(View view) {
         relativeLayout.setVisibility(View.GONE);
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
@@ -56,9 +53,7 @@ public class Shopkeeper extends AppCompatActivity {
     }
 
 
-
-    public void onClickShopLogin(View view)
-    {
+    public void onClickShopLogin(View view) {
         relativeLayout.setVisibility(View.GONE);
         fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();

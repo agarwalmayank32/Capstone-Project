@@ -20,7 +20,7 @@ public class BookingAdapterCust extends ArrayAdapter<BookingCust> {
     private ArrayList<BookingCust> mBookings;
 
     public BookingAdapterCust(Activity context, ArrayList<BookingCust> bookings) {
-        super(context, R.layout.booking_adapter,bookings);
+        super(context, R.layout.booking_adapter, bookings);
         mContext = context;
         mBookings = bookings;
     }
@@ -30,15 +30,15 @@ public class BookingAdapterCust extends ArrayAdapter<BookingCust> {
     public View getView(int position, View convertView, @NonNull ViewGroup parent) {
         LayoutInflater inflater = mContext.getLayoutInflater();
         @SuppressLint("ViewHolder")
-        final View rowView = inflater.inflate(R.layout.booking_adapter,null, true);
+        final View rowView = inflater.inflate(R.layout.booking_adapter, null, true);
 
-        TextView shopEmail = (TextView)rowView.findViewById(R.id.shopEmailBooking);
-        TextView serviceName = (TextView)rowView.findViewById(R.id.serviceNameBooking);
-        TextView serviceTime = (TextView)rowView.findViewById(R.id.serviceTimeBooking);
-        TextView serviceDate = (TextView)rowView.findViewById(R.id.serviceDateBooking);
-        TextView custPhone = (TextView)rowView.findViewById(R.id.custPhoneBooking);
-        TextView custEmail = (TextView)rowView.findViewById(R.id.custEmailBooking);
-        TextView custName = (TextView)rowView.findViewById(R.id.custNameBooking);
+        TextView shopEmail = (TextView) rowView.findViewById(R.id.shopEmailBooking);
+        TextView serviceName = (TextView) rowView.findViewById(R.id.serviceNameBooking);
+        TextView serviceTime = (TextView) rowView.findViewById(R.id.serviceTimeBooking);
+        TextView serviceDate = (TextView) rowView.findViewById(R.id.serviceDateBooking);
+        TextView custPhone = (TextView) rowView.findViewById(R.id.custPhoneBooking);
+        TextView custEmail = (TextView) rowView.findViewById(R.id.custEmailBooking);
+        TextView custName = (TextView) rowView.findViewById(R.id.custNameBooking);
 
         shopEmail.setText(mBookings.get(position).getShopEmail());
         serviceName.setText(mBookings.get(position).getServiceName());

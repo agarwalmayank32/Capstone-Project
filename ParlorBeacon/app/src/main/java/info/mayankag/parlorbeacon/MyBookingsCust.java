@@ -49,8 +49,8 @@ public class MyBookingsCust extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        bookingsListView = (ListView)findViewById(R.id.bookingsListView);
-        noBookingText = (TextView)findViewById(R.id.noBookingText);
+        bookingsListView = (ListView) findViewById(R.id.bookingsListView);
+        noBookingText = (TextView) findViewById(R.id.noBookingText);
         mBookingCusts = new ArrayList<>();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -66,8 +66,7 @@ public class MyBookingsCust extends AppCompatActivity
         bookingFetch();
     }
 
-    void bookingFetch()
-    {
+    void bookingFetch() {
         JSONObject params = new JSONObject();
         try {
             params.put("email", UtilsCust.loadCustEmail(this));
@@ -75,18 +74,18 @@ public class MyBookingsCust extends AppCompatActivity
             e.printStackTrace();
         }
 
-        String booking_fetch_url = getResources().getString(R.string.booking_fetch_url) ;
+        String booking_fetch_url = getResources().getString(R.string.booking_fetch_url);
 
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, booking_fetch_url,params, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, booking_fetch_url, params, new Response.Listener<JSONObject>() {
             @SuppressLint("SetTextI18n")
             @Override
             public void onResponse(JSONObject response) {
                 mBookingCusts.clear();
                 try {
-                    JSONArray detail=response.getJSONArray("allbookings");
-                    String shopEmail, serviceName, serviceTime , serviceDate, custPhone, custEmail, custName;
+                    JSONArray detail = response.getJSONArray("allbookings");
+                    String shopEmail, serviceName, serviceTime, serviceDate, custPhone, custEmail, custName;
 
-                    if(detail.length()>0) {
+                    if (detail.length() > 0) {
                         noBookingText.setVisibility(View.GONE);
                         bookingsListView.setVisibility(View.VISIBLE);
                         for (int i = 0; i < detail.length(); i++) {
@@ -100,19 +99,16 @@ public class MyBookingsCust extends AppCompatActivity
                             custEmail = singledetail.getString("custemail");
                             custName = singledetail.getString("custname");
 
-                            mBookingCusts.add(new BookingCust(shopEmail, serviceName, serviceTime , serviceDate, custPhone, custEmail, custName));
+                            mBookingCusts.add(new BookingCust(shopEmail, serviceName, serviceTime, serviceDate, custPhone, custEmail, custName));
                         }
                         BookingAdapterCust bookingAdapterCust = new BookingAdapterCust(MyBookingsCust.this, mBookingCusts);
                         bookingsListView.setAdapter(bookingAdapterCust);
-                    }
-                    else
-                    {
+                    } else {
                         noBookingText.setVisibility(View.VISIBLE);
                         noBookingText.setText("No bookings done yet");
                         bookingsListView.setVisibility(View.GONE);
                     }
-                }
-                catch (JSONException e) {
+                } catch (JSONException e) {
                     Toast.makeText(MyBookingsCust.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
                 }
@@ -154,7 +150,7 @@ public class MyBookingsCust extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-       UtilsCust.onNaviationItemSelected(this,item);
+        UtilsCust.onNaviationItemSelected(this, item);
         return true;
     }
 }

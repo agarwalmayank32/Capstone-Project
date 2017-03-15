@@ -5,15 +5,15 @@
         <item
             android:id="@+id/search_servicecust"
             android:icon="@drawable/ic_home"
-            android:title="@string/search_services_title" />
+            android:title="@string/search_services_title"/>
         <item
             android:id="@+id/mybookingcust"
             android:icon="@drawable/ic_booking"
-            android:title="@string/my_bookings_title" />
+            android:title="@string/my_bookings_title"/>
         <item
             android:id="@+id/myprofilecust"
             android:icon="@drawable/ic_action_user"
-            android:title="@string/my_profile_title" />
+            android:title="@string/my_profile_title"/>
         <item
             android:id="@+id/logout"
             android:icon="@drawable/ic_settings_power"
@@ -22,6 +22,6 @@
 
     <item
         android:id="@+id/uf"
-        android:title="@string/uf_title" />
+        android:title="@string/uf_title"/>
 
 </menu>

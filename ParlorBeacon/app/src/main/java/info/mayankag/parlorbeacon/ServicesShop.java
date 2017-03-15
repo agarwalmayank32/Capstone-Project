@@ -32,7 +32,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import info.mayankag.parlorbeacon.Models.Service;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -43,9 +42,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 import info.mayankag.parlorbeacon.Adapter.ServiceListAdapter;
+import info.mayankag.parlorbeacon.Models.Service;
 
 public class ServicesShop extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,SwipeRefreshLayout.OnRefreshListener {
+        implements NavigationView.OnNavigationItemSelectedListener, SwipeRefreshLayout.OnRefreshListener {
 
     private ListView serviceListView;
     private TextView noServiceText;
@@ -80,18 +80,18 @@ public class ServicesShop extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setItemIconTintList(null);
 
-        swipeRefreshLayoutService = (SwipeRefreshLayout)findViewById(R.id.swipeRefreshService);
-        serviceListView = (ListView)findViewById(R.id.serviceDetailsListView);
-        noServiceText = (TextView)findViewById(R.id.no_service_text);
+        swipeRefreshLayoutService = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshService);
+        serviceListView = (ListView) findViewById(R.id.serviceDetailsListView);
+        noServiceText = (TextView) findViewById(R.id.no_service_text);
 
         swipeRefreshLayoutService.setOnRefreshListener(this);
         swipeRefreshLayoutService.post(new Runnable() {
-                @Override
-                public void run() {
-                    swipeRefreshLayoutService.setRefreshing(true);
-                    serviceListViewSetup();
-                }
-            }
+                                           @Override
+                                           public void run() {
+                                               swipeRefreshLayoutService.setRefreshing(true);
+                                               serviceListViewSetup();
+                                           }
+                                       }
         );
 
         services = new ArrayList<>();
@@ -99,15 +99,13 @@ public class ServicesShop extends AppCompatActivity
 
     }
 
-    private void serviceListViewSetup()
-    {
+    private void serviceListViewSetup() {
         swipeRefreshLayoutService.setRefreshing(true);
 
-        if(!UtilsShop.isNetworkAvailable(this)) {
+        if (!UtilsShop.isNetworkAvailable(this)) {
             UtilsShop.NetworkToast(this);
             swipeRefreshLayoutService.setRefreshing(false);
-        }
-        else {
+        } else {
 
             JSONObject params = new JSONObject();
             try {
@@ -116,18 +114,18 @@ public class ServicesShop extends AppCompatActivity
                 e.printStackTrace();
             }
 
-            String getServiceDetails_url = getResources().getString(R.string.getServiceDetails_url) ;
+            String getServiceDetails_url = getResources().getString(R.string.getServiceDetails_url);
 
-            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, getServiceDetails_url,params, new Response.Listener<JSONObject>() {
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, getServiceDetails_url, params, new Response.Listener<JSONObject>() {
                 @SuppressLint("SetTextI18n")
                 @Override
                 public void onResponse(JSONObject response) {
                     services.clear();
                     try {
-                        JSONArray detail=response.getJSONArray("info");
-                        String serviceName,serviceDuration,serviceType;
+                        JSONArray detail = response.getJSONArray("info");
+                        String serviceName, serviceDuration, serviceType;
 
-                        if(detail.length()>0) {
+                        if (detail.length() > 0) {
                             serviceListView.setVisibility(View.VISIBLE);
                             noServiceText.setVisibility(View.GONE);
 
@@ -137,20 +135,18 @@ public class ServicesShop extends AppCompatActivity
                                 serviceName = singledetail.getString("service");
                                 serviceDuration = singledetail.getString("duration") + " min";
                                 serviceType = singledetail.getString("servicetype");
-                                services.add(new Service(serviceName,serviceDuration,serviceType));
+                                services.add(new Service(serviceName, serviceDuration, serviceType));
                             }
                             swipeRefreshLayoutService.setRefreshing(false);
-                            serviceListAdapter = new ServiceListAdapter(ServicesShop.this,services);
+                            serviceListAdapter = new ServiceListAdapter(ServicesShop.this, services);
                             serviceListView.setAdapter(serviceListAdapter);
 
-                        }
-                        else {
+                        } else {
                             swipeRefreshLayoutService.setRefreshing(false);
                             serviceListView.setVisibility(View.GONE);
                             noServiceText.setVisibility(View.VISIBLE);
                         }
-                    }
-                    catch (JSONException e) {
+                    } catch (JSONException e) {
                         swipeRefreshLayoutService.setRefreshing(false);
                         Toast.makeText(ServicesShop.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                         e.printStackTrace();
@@ -190,7 +186,7 @@ public class ServicesShop extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        UtilsShop.onNaviationItemSelectedShop(this,item);
+        UtilsShop.onNaviationItemSelectedShop(this, item);
         return true;
     }
 
@@ -200,42 +196,39 @@ public class ServicesShop extends AppCompatActivity
         dialog.setContentView(R.layout.dialog_add_service_shop);
         dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
 
-        final EditText serviceName = (EditText)dialog.findViewById(R.id.serviceNameAdd);
+        final EditText serviceName = (EditText) dialog.findViewById(R.id.serviceNameAdd);
         final String[] durationArray = getResources().getStringArray(R.array.serviceDuration);
 
-        Spinner spin = (Spinner)dialog.findViewById(R.id.serviceDurationAdd);
+        Spinner spin = (Spinner) dialog.findViewById(R.id.serviceDurationAdd);
         spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
-                if(position!=0) {
-                    duration = Integer.parseInt(durationArray[position].replace(" min",""));
-                }
-                else {
-                    Toast.makeText(ServicesShop.this, "Please select service duration", Toast.LENGTH_SHORT).show();
+                if (position != 0) {
+                    duration = Integer.parseInt(durationArray[position].replace(" min", ""));
+                } else {
+                    Toast.makeText(ServicesShop.this, R.string.service_duration_select_text, Toast.LENGTH_SHORT).show();
                 }
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
         });
 
-        Button addButton = (Button)dialog.findViewById(R.id.serviceAddButton);
+        Button addButton = (Button) dialog.findViewById(R.id.serviceAddButton);
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if(!UtilsShop.isNetworkAvailable(context)) {
+                if (!UtilsShop.isNetworkAvailable(context)) {
                     UtilsShop.NetworkToast(context);
-                }
-                else
-                {
+                } else {
                     final String name = serviceName.getText().toString();
                     final String email = UtilsShop.loadShopEmail(ServicesShop.this);
 
-                    if(name.equals("")) {
-                        UtilsShop.ShortToast(context,"Please fill all the details");
-                    }
-                    else {
+                    if (name.equals("")) {
+                        UtilsShop.ShortToast(context, getString(R.string.fill_all_details_text));
+                    } else {
                         String addService_url = getResources().getString(R.string.addService_url);
 
                         StringRequest stringRequest = new StringRequest(Request.Method.POST, addService_url, new Response.Listener<String>() {
@@ -245,9 +238,9 @@ public class ServicesShop extends AppCompatActivity
                                     if (response.equalsIgnoreCase("Success")) {
                                         serviceListViewSetup();
                                         dialog.dismiss();
-                                        UtilsShop.ShortToast(context, "Service Add Successfully");
+                                        UtilsShop.ShortToast(context, getString(R.string.service_add_success_text));
                                     } else if (response.equalsIgnoreCase("Failed")) {
-                                        UtilsShop.ShortToast(context, "Service Could Not be Added due to some problem. Please Try Again.");
+                                        UtilsShop.ShortToast(context, getString(R.string.service_add_fail_text));
                                     }
                                 } catch (Exception e) {
                                     UtilsShop.ShortToast(context, e.getMessage());

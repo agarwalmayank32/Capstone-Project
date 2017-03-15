@@ -7,8 +7,7 @@ public class Employee {
     private String PhoneNo;
     private String Designation;
 
-    public Employee(String name, String email, String phoneNo, String designation)
-    {
+    public Employee(String name, String email, String phoneNo, String designation) {
         Name = name;
         Email = email;
         PhoneNo = phoneNo;
@@ -19,28 +18,28 @@ public class Employee {
         return Name;
     }
 
-    public String getEmail() {
-        return Email;
-    }
-
-    public String getPhoneNo() {
-        return PhoneNo;
-    }
-
-    public String getDesignation() {
-        return Designation;
-    }
-
     public void setName(String name) {
         Name = name;
+    }
+
+    public String getEmail() {
+        return Email;
     }
 
     public void setEmail(String email) {
         Email = email;
     }
 
+    public String getPhoneNo() {
+        return PhoneNo;
+    }
+
     public void setPhoneNo(String phoneNo) {
         PhoneNo = phoneNo;
+    }
+
+    public String getDesignation() {
+        return Designation;
     }
 
     public void setDesignation(String designation) {

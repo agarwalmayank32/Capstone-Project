@@ -11,7 +11,6 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
@@ -26,8 +25,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import info.mayankag.parlorbeacon.Adapter.BookingListAdapter;
-import info.mayankag.parlorbeacon.Models.Booking;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -39,8 +36,11 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
+import info.mayankag.parlorbeacon.Adapter.BookingListAdapter;
+import info.mayankag.parlorbeacon.Models.Booking;
+
 public class MainScreenShop extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,SwipeRefreshLayout.OnRefreshListener {
+        implements NavigationView.OnNavigationItemSelectedListener, SwipeRefreshLayout.OnRefreshListener {
 
     private ListView todayBookingListView;
     private TextView todayNoBookingText;
@@ -49,7 +49,7 @@ public class MainScreenShop extends AppCompatActivity
 
     private ArrayList<Booking> todayBookings;
     private BookingListAdapter todayBookingListAdapter;
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,35 +67,33 @@ public class MainScreenShop extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setItemIconTintList(null);
 
-        swipeRefreshLayoutTodayBooking = (SwipeRefreshLayout)findViewById(R.id.swipeRefreshTodayBooking);
-        todayBookingListView = (ListView)findViewById(R.id.todaybookingListView);
-        todayNoBookingText = (TextView)findViewById(R.id.today_no_booking_text);
-        relativeLayoutTodayBooking = (RelativeLayout)findViewById(R.id.RLTodayScheduleListView);
+        swipeRefreshLayoutTodayBooking = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshTodayBooking);
+        todayBookingListView = (ListView) findViewById(R.id.todaybookingListView);
+        todayNoBookingText = (TextView) findViewById(R.id.today_no_booking_text);
+        relativeLayoutTodayBooking = (RelativeLayout) findViewById(R.id.RLTodayScheduleListView);
 
         swipeRefreshLayoutTodayBooking.setOnRefreshListener(this);
         swipeRefreshLayoutTodayBooking.post(new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                swipeRefreshLayoutTodayBooking.setRefreshing(true);
-                                                todayBookingListViewSetup();
+                                                @Override
+                                                public void run() {
+                                                    swipeRefreshLayoutTodayBooking.setRefreshing(true);
+                                                    todayBookingListViewSetup();
+                                                }
                                             }
-                                        }
         );
 
         todayBookings = new ArrayList<>();
         todayBookingListViewSetup();
     }
 
-    private void todayBookingListViewSetup()
-    {
+    private void todayBookingListViewSetup() {
         swipeRefreshLayoutTodayBooking.setRefreshing(true);
 
-        if(!UtilsShop.isNetworkAvailable(this)) {
+        if (!UtilsShop.isNetworkAvailable(this)) {
             UtilsShop.NetworkToast(this);
             swipeRefreshLayoutTodayBooking.setRefreshing(false);
-        }
-        else {
-            String getTodayBooking_url = getResources().getString(R.string.getTodayBooking_url) ;
+        } else {
+            String getTodayBooking_url = getResources().getString(R.string.getTodayBooking_url);
             todayBookings.clear();
 
             @SuppressLint("SimpleDateFormat")
@@ -106,20 +104,20 @@ public class MainScreenShop extends AppCompatActivity
             JSONObject params = new JSONObject();
             try {
                 params.put("email", UtilsShop.loadShopEmail(this));
-                params.put("todaydate",todayDate);
+                params.put("todaydate", todayDate);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
 
-            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, getTodayBooking_url,params, new Response.Listener<JSONObject>() {
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, getTodayBooking_url, params, new Response.Listener<JSONObject>() {
                 @SuppressLint("SetTextI18n")
                 @Override
                 public void onResponse(JSONObject response) {
                     try {
-                        JSONArray detail=response.getJSONArray("todaybooking");
-                        String custName,custEmail,serviceName,serviceTime,serviceDate,serviceStatus;
+                        JSONArray detail = response.getJSONArray("todaybooking");
+                        String custName, custEmail, serviceName, serviceTime, serviceDate, serviceStatus;
 
-                        if(detail.length()>0) {
+                        if (detail.length() > 0) {
                             relativeLayoutTodayBooking.setVisibility(View.VISIBLE);
                             todayNoBookingText.setVisibility(View.GONE);
 
@@ -133,19 +131,17 @@ public class MainScreenShop extends AppCompatActivity
                                 serviceDate = singledetail.getString("date");
                                 serviceStatus = singledetail.getString("status");
 
-                                todayBookings.add(new Booking(custName,custEmail,serviceName,serviceTime,serviceDate,serviceStatus));
+                                todayBookings.add(new Booking(custName, custEmail, serviceName, serviceTime, serviceDate, serviceStatus));
                             }
                             swipeRefreshLayoutTodayBooking.setRefreshing(false);
-                            todayBookingListAdapter = new BookingListAdapter(MainScreenShop.this,todayBookings);
+                            todayBookingListAdapter = new BookingListAdapter(MainScreenShop.this, todayBookings);
                             todayBookingListView.setAdapter(todayBookingListAdapter);
-                        }
-                        else {
+                        } else {
                             swipeRefreshLayoutTodayBooking.setRefreshing(false);
                             relativeLayoutTodayBooking.setVisibility(View.GONE);
                             todayNoBookingText.setVisibility(View.VISIBLE);
                         }
-                    }
-                    catch (JSONException e) {
+                    } catch (JSONException e) {
                         Toast.makeText(MainScreenShop.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                         e.printStackTrace();
                         swipeRefreshLayoutTodayBooking.setRefreshing(false);
@@ -187,17 +183,17 @@ public class MainScreenShop extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.shop_myBooking) {
-            startActivity(new Intent(this,MyBookingsShop.class));
+            startActivity(new Intent(this, MyBookingsShop.class));
         } else if (id == R.id.shop_myemployee) {
-            startActivity(new Intent(this,MyEmployeesShop.class));
+            startActivity(new Intent(this, MyEmployeesShop.class));
         } else if (id == R.id.shop_services) {
-            startActivity(new Intent(this,ServicesShop.class));
+            startActivity(new Intent(this, ServicesShop.class));
         } else if (id == R.id.shop_details) {
-            startActivity(new Intent(this,ShopDetails.class));
+            startActivity(new Intent(this, ShopDetails.class));
         } else if (id == R.id.about) {
-            startActivity(new Intent(this,About.class));
+            startActivity(new Intent(this, About.class));
         } else if (id == R.id.contact) {
-            startActivity(new Intent(this,ContactUs.class));
+            startActivity(new Intent(this, ContactUs.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

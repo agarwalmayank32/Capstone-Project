@@ -2,8 +2,8 @@ package info.mayankag.parlorbeacon;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,19 +42,18 @@ public class SelectedShopDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selected_shop_details);
 
-        shopkeeperNameText = (TextView)findViewById(R.id.shopkeeperNameSelected);
-        shopNameText = (TextView)findViewById(R.id.shopNameSelected);
-        shopEmailText = (TextView)findViewById(R.id.shopEmailSelected);
-        shopPhoneText = (TextView)findViewById(R.id.shopPhoneSelected);
-        shopAddressText = (TextView)findViewById(R.id.shopAddressSelected);
-        shopOpenTimeText = (TextView)findViewById(R.id.shopOpenTimeSelected);
-        shopCloseTimeText = (TextView)findViewById(R.id.shopCloseTimeSelected);
-        shopCityText = (TextView)findViewById(R.id.shopCitySelected);
-        shopZipText = (TextView)findViewById(R.id.shopZipSelected);
+        shopkeeperNameText = (TextView) findViewById(R.id.shopkeeperNameSelected);
+        shopNameText = (TextView) findViewById(R.id.shopNameSelected);
+        shopEmailText = (TextView) findViewById(R.id.shopEmailSelected);
+        shopPhoneText = (TextView) findViewById(R.id.shopPhoneSelected);
+        shopAddressText = (TextView) findViewById(R.id.shopAddressSelected);
+        shopOpenTimeText = (TextView) findViewById(R.id.shopOpenTimeSelected);
+        shopCloseTimeText = (TextView) findViewById(R.id.shopCloseTimeSelected);
+        shopCityText = (TextView) findViewById(R.id.shopCitySelected);
+        shopZipText = (TextView) findViewById(R.id.shopZipSelected);
 
         Bundle extras = getIntent().getExtras();
-        if(extras!=null)
-        {
+        if (extras != null) {
             shopEmail = extras.getString("ShopEmail");
             shopName = extras.getString("ShopName");
             setTitle(shopName);
@@ -62,20 +61,17 @@ public class SelectedShopDetails extends AppCompatActivity {
         }
     }
 
-    public void book(View view)
-    {
-        Intent intent = new Intent(this,ServiceSelectCust.class);
-        intent.putExtra("ShopEmail",shopEmail);
+    public void book(View view) {
+        Intent intent = new Intent(this, ServiceSelectCust.class);
+        intent.putExtra("ShopEmail", shopEmail);
         startActivity(intent);
         finish();
     }
 
-    private void showSelectedShopDetails()
-    {
-        if(!UtilsCust.isNetworkAvailable(this)) {
+    private void showSelectedShopDetails() {
+        if (!UtilsCust.isNetworkAvailable(this)) {
             UtilsCust.NetworkToast(this);
-        }
-        else {
+        } else {
 
             JSONObject params = new JSONObject();
             try {
@@ -86,12 +82,12 @@ public class SelectedShopDetails extends AppCompatActivity {
 
             String selected_shop_details_url = getResources().getString(R.string.selected_shop_details_url);
 
-            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, selected_shop_details_url,params, new Response.Listener<JSONObject>() {
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, selected_shop_details_url, params, new Response.Listener<JSONObject>() {
                 @SuppressLint("SetTextI18n")
                 @Override
                 public void onResponse(JSONObject response) {
                     try {
-                        JSONArray detail=response.getJSONArray("shopdata");
+                        JSONArray detail = response.getJSONArray("shopdata");
 
                         JSONObject singledetail = detail.getJSONObject(0);
 
@@ -104,8 +100,7 @@ public class SelectedShopDetails extends AppCompatActivity {
                         shopCloseTimeText.setText(singledetail.getString("endtime"));
                         shopZipText.setText(singledetail.getString("zipcode"));
                         shopCityText.setText(singledetail.getString("city"));
-                    }
-                    catch (JSONException e) {
+                    } catch (JSONException e) {
                         Toast.makeText(SelectedShopDetails.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                         e.printStackTrace();
                     }
@@ -128,5 +123,5 @@ public class SelectedShopDetails extends AppCompatActivity {
             requestQueue.add(jsonObjectRequest);
         }
     }
-    
+
 }

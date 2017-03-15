@@ -10,8 +10,7 @@ public class Booking {
     private String ServiceStatus;
     private String ServiceDate;
 
-    public Booking(String customerName, String customerEmail, String serviceName, String serviceTime, String serviceDate, String serviceStatus)
-    {
+    public Booking(String customerName, String customerEmail, String serviceName, String serviceTime, String serviceDate, String serviceStatus) {
         CustomerName = customerName;
         CustomerEmail = customerEmail;
         ServiceName = serviceName;
@@ -24,6 +23,10 @@ public class Booking {
         return CustomerName;
     }
 
+    public void setCustomerName(String customerName) {
+        CustomerName = customerName;
+    }
+
     public String getCustomerEmail() {
         return CustomerEmail;
     }
@@ -32,39 +35,35 @@ public class Booking {
         return ServiceName;
     }
 
-    public String getServiceTime() {
-        return ServiceTime;
-    }
-
-    public String getServiceStatus() {
-        return ServiceStatus;
-    }
-
-    public String getServiceDate() {
-        return ServiceDate;
-    }
-
-    public void setCustomerName(String customerName) {
-        CustomerName = customerName;
-    }
-
-    public void setEmail(String customerEmail) {
-        CustomerEmail = customerEmail;
-    }
-
     public void setServiceName(String serviceName) {
         ServiceName = serviceName;
+    }
+
+    public String getServiceTime() {
+        return ServiceTime;
     }
 
     public void setServiceTime(String serviceTime) {
         ServiceTime = serviceTime;
     }
 
+    public String getServiceStatus() {
+        return ServiceStatus;
+    }
+
     public void setServiceStatus(String serviceStatus) {
         ServiceStatus = serviceStatus;
     }
 
+    public String getServiceDate() {
+        return ServiceDate;
+    }
+
     public void setServiceDate(String serviceDate) {
         ServiceDate = serviceDate;
+    }
+
+    public void setEmail(String customerEmail) {
+        CustomerEmail = customerEmail;
     }
 }

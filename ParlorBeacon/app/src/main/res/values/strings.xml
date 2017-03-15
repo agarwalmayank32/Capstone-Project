@@ -267,6 +267,31 @@
 
     <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
     <string name="add_button_dialog_add_service_shop">Add</string>
+    <string name="no_service_text">No Services Added Yet</string>
+    <string name="shopkeeper_selection_text">Shopkeeper</string>
+    <string name="customer_selection_text">Customer</string>
+    <string name="employee_add_button_text">Add</string>
+    <string name="no_internet_text">Internet Not Connected. Please connect to internet and try again.</string>
+    <string name="enter_all_details_text">Please enter all the Details</string>
+    <string name="terms_and_conditions_text">Please agree with Terms and Conditions</string>
+    <string name="valid_email_text">Please enter a valid email address</string>
+    <string name="valid_password_text">Please Enter Password greater than 8 character</string>
+    <string name="already_registered_text">Sorry You have Already Registered Yet</string>
+    <string name="error_text">Something missing</string>
+    <string name="error1_text">Error</string>
+    <string name="request_accepted_text">Your Request has not been accepted please wait.</string>
+    <string name="not_registered_text">Sorry You haven\'t Registered Yet</string>
+    <string name="fill_all_details_text">Please fill all the details</string>
+    <string name="employee_add_success_text">Employee Add Successfully</string>
+    <string name="employee_add_fail_text">Employee Could Not be Added due to some problem. Please Try Again.</string>
+    <string name="pp_select_cancel_text">Profile Picture Selection Canceled</string>
+    <string name="sfp_select_cancel_text">Shop Front Picture Selection Canceled</string>
+    <string name="booking_cust_fail_text">BookingCust Failed.</string>
+    <string name="enter_all_detail_text">Please enter all the Details</string>
+    <string name="service_duration_select_text">Please select service duration</string>
+    <string name="service_add_success_text">Service Add Successfully</string>
+    <string name="service_add_fail_text">Service Could Not be Added due to some problem. Please Try Again.</string>
+    <string name="pic_upload_success_text">Pic Uploaded</string>
 
     <string-array name="serviceDuration">
         <item>Select Duration</item>

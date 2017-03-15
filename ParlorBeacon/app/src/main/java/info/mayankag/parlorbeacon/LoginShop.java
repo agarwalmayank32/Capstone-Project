@@ -33,8 +33,7 @@ import java.io.FileOutputStream;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LoginShop extends DialogFragment
-{
+public class LoginShop extends DialogFragment {
     private EditText emailText;
     private EditText passText;
     private Button login;
@@ -42,7 +41,7 @@ public class LoginShop extends DialogFragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.login_shop, container, false);
-        Toolbar toolbar = (Toolbar)v.findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) v.findViewById(R.id.toolbar);
         toolbar.setTitle("Login");
 
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
@@ -54,9 +53,9 @@ public class LoginShop extends DialogFragment
         }
         setHasOptionsMenu(true);
 
-        emailText = (EditText)v.findViewById(R.id.login_shop_email);
-        passText = (EditText)v.findViewById(R.id.login_shop_password);
-        login = (Button)v.findViewById(R.id.login_shop_button);
+        emailText = (EditText) v.findViewById(R.id.login_shop_email);
+        passText = (EditText) v.findViewById(R.id.login_shop_password);
+        login = (Button) v.findViewById(R.id.login_shop_button);
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,8 +67,7 @@ public class LoginShop extends DialogFragment
         return v;
     }
 
-    private void login()
-    {
+    private void login() {
         if (!UtilsShop.isNetworkAvailable(getActivity())) {
             UtilsShop.NetworkToast(getActivity());
         } else {
@@ -100,7 +98,7 @@ public class LoginShop extends DialogFragment
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         loading.dismiss();
-                        UtilsShop.ShortToast(getActivity(),error.getMessage());
+                        UtilsShop.ShortToast(getActivity(), error.getMessage());
                     }
                 }) {
                     @Override
@@ -119,27 +117,22 @@ public class LoginShop extends DialogFragment
         }
     }
 
-    private boolean validateForm(String email, String password)
-    {
-        if(!(email.contains("@") && email.contains(".com"))) {
-            UtilsShop.ShortToast(getActivity(),getString(R.string.invalid_email_text_shop));
+    private boolean validateForm(String email, String password) {
+        if (!(email.contains("@") && email.contains(".com"))) {
+            UtilsShop.ShortToast(getActivity(), getString(R.string.invalid_email_text_shop));
             return false;
-        }
-        else if(password.length()<8) {
-            UtilsShop.ShortToast(getActivity(),getString(R.string.invalid_password_text_shop));
+        } else if (password.length() < 8) {
+            UtilsShop.ShortToast(getActivity(), getString(R.string.invalid_password_text_shop));
             return false;
-        }
-        else {
+        } else {
             return true;
         }
     }
 
-    private void saveNameShop()
-    {
-        if(!UtilsShop.isNetworkAvailable(getActivity())) {
+    private void saveNameShop() {
+        if (!UtilsShop.isNetworkAvailable(getActivity())) {
             UtilsShop.NetworkToast(getActivity());
-        }
-        else {
+        } else {
             String login_name_url = getResources().getString(R.string.login_fetch_name_shop_url);
 
             final ProgressDialog loading = ProgressDialog.show(getActivity(), "Loading...", "Fetching Your Name...", false, false);

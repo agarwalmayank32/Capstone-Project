@@ -13,7 +13,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Base64;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -42,6 +41,8 @@ import java.util.Map;
 
 public class ShopDetails extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
+    private static final int PICK_IMAGE_ID1 = 0;
+    private static final int PICK_IMAGE_ID2 = 1;
     private ImageView profilePic;
     private ImageView frontPic;
     private TextView shopkeeperName;
@@ -53,9 +54,6 @@ public class ShopDetails extends AppCompatActivity implements NavigationView.OnN
     private TextView shopZip;
     private TextView shopOpenTime;
     private TextView shopCloseTime;
-
-    private static final int PICK_IMAGE_ID1 = 0;
-    private static final int PICK_IMAGE_ID2 = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,30 +72,26 @@ public class ShopDetails extends AppCompatActivity implements NavigationView.OnN
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setItemIconTintList(null);
 
-        profilePic = (ImageView)findViewById(R.id.shopkeeperImage);
-        frontPic = (ImageView)findViewById(R.id.shopImage);
+        profilePic = (ImageView) findViewById(R.id.shopkeeperImage);
+        frontPic = (ImageView) findViewById(R.id.shopImage);
 
         shopkeeperName = (TextView) findViewById(R.id.shopKeeperName);
-        shopkeeperEmail = (TextView)findViewById(R.id.shopKeeperEmail);
-        shopName = (TextView)findViewById(R.id.shopName);
-        shopPhone = (TextView)findViewById(R.id.shopPhone);
-        shopAddress = (TextView)findViewById(R.id.shopAddress);
-        shopCity = (TextView)findViewById(R.id.shopCity);
-        shopZip = (TextView)findViewById(R.id.shopZipCode);
-        shopOpenTime = (TextView)findViewById(R.id.shopOpenTime);
-        shopCloseTime = (TextView)findViewById(R.id.shopCloseTime);
+        shopkeeperEmail = (TextView) findViewById(R.id.shopKeeperEmail);
+        shopName = (TextView) findViewById(R.id.shopName);
+        shopPhone = (TextView) findViewById(R.id.shopPhone);
+        shopAddress = (TextView) findViewById(R.id.shopAddress);
+        shopCity = (TextView) findViewById(R.id.shopCity);
+        shopZip = (TextView) findViewById(R.id.shopZipCode);
+        shopOpenTime = (TextView) findViewById(R.id.shopOpenTime);
+        shopCloseTime = (TextView) findViewById(R.id.shopCloseTime);
 
         ShopDetailsSetup();
     }
 
-    private void ShopDetailsSetup()
-    {
-        if(!UtilsShop.isNetworkAvailable(this))
-        {
+    private void ShopDetailsSetup() {
+        if (!UtilsShop.isNetworkAvailable(this)) {
             UtilsShop.NetworkToast(this);
-        }
-        else
-        {
+        } else {
             String getDetails_url = getResources().getString(R.string.getDetails_url);
             String getPic_url = getResources().getString(R.string.getPic_url);
 
@@ -108,16 +102,14 @@ public class ShopDetails extends AppCompatActivity implements NavigationView.OnN
                 e.printStackTrace();
             }
 
-            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, getDetails_url,params, new Response.Listener<JSONObject>() {
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, getDetails_url, params, new Response.Listener<JSONObject>() {
                 @SuppressLint("SetTextI18n")
                 @Override
                 public void onResponse(JSONObject response) {
-                    try
-                    {
-                        JSONArray detail=response.getJSONArray("info");
-                        if(detail.length()>0)
-                        {
-                            for(int i=0;i<detail.length();i++) {
+                    try {
+                        JSONArray detail = response.getJSONArray("info");
+                        if (detail.length() > 0) {
+                            for (int i = 0; i < detail.length(); i++) {
                                 JSONObject singledetail = detail.getJSONObject(i);
                                 shopkeeperName.setText(singledetail.getString("shopkeepername"));
                                 shopkeeperEmail.setText(UtilsShop.loadShopEmail(ShopDetails.this));
@@ -130,9 +122,7 @@ public class ShopDetails extends AppCompatActivity implements NavigationView.OnN
                                 shopCloseTime.setText(singledetail.getString("endtime"));
                             }
                         }
-                    }
-                    catch (JSONException e)
-                    {
+                    } catch (JSONException e) {
                         Toast.makeText(ShopDetails.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                         e.printStackTrace();
                     }
@@ -153,8 +143,8 @@ public class ShopDetails extends AppCompatActivity implements NavigationView.OnN
             RequestQueue requestQueue = Volley.newRequestQueue(this);
             requestQueue.add(jsonObjectRequest);
 
-            Picasso.with(ShopDetails.this).load(getPic_url+ UtilsShop.loadShopEmail(this)+"/profilepic.png").error(R.drawable.ic_npi).into(profilePic);
-            Picasso.with(ShopDetails.this).load(getPic_url+ UtilsShop.loadShopEmail(this)+"/frontpic.png").error(R.drawable.ic_nfi).into(frontPic);
+            Picasso.with(ShopDetails.this).load(getPic_url + UtilsShop.loadShopEmail(this) + "/profilepic.png").error(R.drawable.ic_npi).into(profilePic);
+            Picasso.with(ShopDetails.this).load(getPic_url + UtilsShop.loadShopEmail(this) + "/frontpic.png").error(R.drawable.ic_nfi).into(frontPic);
         }
     }
 
@@ -171,7 +161,7 @@ public class ShopDetails extends AppCompatActivity implements NavigationView.OnN
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        UtilsShop.onNaviationItemSelectedShop(this,item);
+        UtilsShop.onNaviationItemSelectedShop(this, item);
         return true;
     }
 
@@ -187,37 +177,37 @@ public class ShopDetails extends AppCompatActivity implements NavigationView.OnN
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        switch(requestCode) {
+        switch (requestCode) {
             case PICK_IMAGE_ID1:
                 Bitmap bitmap1 = ImagePicker.getImageFromResult(this, resultCode, data);
-                if(bitmap1!=null) {
+                if (bitmap1 != null) {
                     profilePic.setImageBitmap(bitmap1);
-                    uploadImage(bitmap1,0);
+                    uploadImage(bitmap1, 0);
                 } else {
-                    Toast.makeText(this,"Profile Picture Selection Canceled", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, R.string.pp_select_cancel_text, Toast.LENGTH_SHORT).show();
                 }
                 break;
             case PICK_IMAGE_ID2:
                 Bitmap bitmap2 = ImagePicker.getImageFromResult(this, resultCode, data);
-                if(bitmap2!=null) {
+                if (bitmap2 != null) {
                     frontPic.setImageBitmap(bitmap2);
-                    uploadImage(bitmap2,1);
+                    uploadImage(bitmap2, 1);
                 } else {
-                    Toast.makeText(this,"Shop Front Picture Selection Canceled", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, R.string.sfp_select_cancel_text, Toast.LENGTH_SHORT).show();
                 }
                 break;
-            default: super.onActivityResult(requestCode, resultCode, data);
+            default:
+                super.onActivityResult(requestCode, resultCode, data);
                 break;
         }
     }
 
-    private void uploadImage(final Bitmap bitmap, int val){
-        final ProgressDialog loading = ProgressDialog.show(this,"Uploading...","Please wait...",false,false);
+    private void uploadImage(final Bitmap bitmap, int val) {
+        final ProgressDialog loading = ProgressDialog.show(this, "Uploading...", "Please wait...", false, false);
         String UPLOAD_URL;
-        if(val==0) {
+        if (val == 0) {
             UPLOAD_URL = getResources().getString(R.string.profilePicUpload_url);
-        }
-        else {
+        } else {
             UPLOAD_URL = getResources().getString(R.string.frontPicUpload_url);
         }
 
@@ -226,8 +216,8 @@ public class ShopDetails extends AppCompatActivity implements NavigationView.OnN
                     @Override
                     public void onResponse(String resonse) {
                         loading.dismiss();
-                        if(resonse.equalsIgnoreCase("success")) {
-                            Toast.makeText(ShopDetails.this, "Pic Uploaded" , Toast.LENGTH_LONG).show();
+                        if (resonse.equalsIgnoreCase("success")) {
+                            Toast.makeText(ShopDetails.this, R.string.pic_upload_success_text, Toast.LENGTH_LONG).show();
                         }
                     }
                 }, new Response.ErrorListener() {
@@ -237,52 +227,52 @@ public class ShopDetails extends AppCompatActivity implements NavigationView.OnN
                 Toast.makeText(ShopDetails.this, volleyError.getMessage(), Toast.LENGTH_LONG).show();
 
                 String body;
-                if(volleyError.networkResponse.data!=null) {
+                if (volleyError.networkResponse.data != null) {
                     try {
-                        body = new String(volleyError.networkResponse.data,"UTF-8");
-                        Toast.makeText(ShopDetails.this,body, Toast.LENGTH_SHORT).show();
+                        body = new String(volleyError.networkResponse.data, "UTF-8");
+                        Toast.makeText(ShopDetails.this, body, Toast.LENGTH_SHORT).show();
                     } catch (UnsupportedEncodingException e) {
                         e.printStackTrace();
-                        Toast.makeText(ShopDetails.this,e.toString(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ShopDetails.this, e.toString(), Toast.LENGTH_SHORT).show();
                     }
                 }
             }
-        }){
+        }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 //Converting Bitmap to String
                 String image = getStringImage(bitmap);
-                
-                Map<String,String> params = new Hashtable<>();
+
+                Map<String, String> params = new Hashtable<>();
                 params.put("image", image);
                 params.put("email", UtilsShop.loadShopEmail(ShopDetails.this));
-                
+
                 return params;
             }
         };
-        
+
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
     }
-    
-    private String getStringImage(Bitmap bmp){
+
+    private String getStringImage(Bitmap bmp) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bmp.compress(Bitmap.CompressFormat.JPEG, 100, baos);
         byte[] imageBytes = baos.toByteArray();
         return Base64.encodeToString(imageBytes, Base64.DEFAULT);
     }
-    
+
     public void onClickEditShopDetails(View view) {
-        Intent intent = new Intent(this,EditShopDetails.class);
-        intent.putExtra("ShopkeeperName",shopkeeperName.getText().toString());
-        intent.putExtra("ShopkeeperEmail",shopkeeperEmail.getText().toString());
-        intent.putExtra("ShopName",shopName.getText().toString());
-        intent.putExtra("ShopPhone",shopPhone.getText().toString());
-        intent.putExtra("ShopAddress",shopAddress.getText().toString());
-        intent.putExtra("ShopCity",shopCity.getText().toString());
-        intent.putExtra("ShopZip",shopZip.getText().toString());
-        intent.putExtra("ShopOpenTime",shopOpenTime.getText().toString());
-        intent.putExtra("ShopCloseTime",shopCloseTime.getText().toString());
+        Intent intent = new Intent(this, EditShopDetails.class);
+        intent.putExtra("ShopkeeperName", shopkeeperName.getText().toString());
+        intent.putExtra("ShopkeeperEmail", shopkeeperEmail.getText().toString());
+        intent.putExtra("ShopName", shopName.getText().toString());
+        intent.putExtra("ShopPhone", shopPhone.getText().toString());
+        intent.putExtra("ShopAddress", shopAddress.getText().toString());
+        intent.putExtra("ShopCity", shopCity.getText().toString());
+        intent.putExtra("ShopZip", shopZip.getText().toString());
+        intent.putExtra("ShopOpenTime", shopOpenTime.getText().toString());
+        intent.putExtra("ShopCloseTime", shopCloseTime.getText().toString());
         startActivity(intent);
     }
 }

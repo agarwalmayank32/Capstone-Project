@@ -26,7 +26,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class UpcomingFeatures extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,LoaderManager.LoaderCallbacks<String> {
+public class UpcomingFeatures extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, LoaderManager.LoaderCallbacks<String> {
 
     TextView txt;
     private AdView mAdView;
@@ -38,7 +38,7 @@ public class UpcomingFeatures extends AppCompatActivity implements NavigationVie
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        txt = (TextView)findViewById(R.id.uf_txt);
+        txt = (TextView) findViewById(R.id.uf_txt);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -54,7 +54,7 @@ public class UpcomingFeatures extends AppCompatActivity implements NavigationVie
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        getSupportLoaderManager().initLoader(0,null,this).forceLoad();
+        getSupportLoaderManager().initLoader(0, null, this).forceLoad();
     }
 
     @Override
@@ -70,6 +70,30 @@ public class UpcomingFeatures extends AppCompatActivity implements NavigationVie
     public Loader<String> onCreateLoader(int id, Bundle args) {
         return new FetchData(this);
     }
+
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.extra, menu);
+        return true;
+    }
+
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        UtilsCust.onNaviationItemSelected(this, item);
+        return true;
+    }
+
     private static class FetchData extends AsyncTaskLoader<String> {
 
         FetchData(Context context) {
@@ -117,28 +141,5 @@ public class UpcomingFeatures extends AppCompatActivity implements NavigationVie
         public void deliverResult(String data) {
             super.deliverResult(data);
         }
-    }
-
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.extra, menu);
-        return true;
-    }
-
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        UtilsCust.onNaviationItemSelected(this,item);
-        return true;
     }
 }

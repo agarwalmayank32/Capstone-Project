@@ -9,8 +9,8 @@
         android:id="@+id/serviceNameAdd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:maxLines="1"
-        android:hint=""/>
+        android:hint=""
+        android:maxLines="1"/>
 
     <Spinner
         android:id="@+id/serviceDurationAdd"
@@ -23,8 +23,8 @@
         android:id="@+id/serviceAddButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_below="@+id/serviceDurationAdd"
-        android:text="@string/add_button_dialog_add_service_shop" />
+        android:layout_centerHorizontal="true"
+        android:text="@string/add_button_dialog_add_service_shop"/>
 
 </RelativeLayout>

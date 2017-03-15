@@ -10,8 +10,7 @@ public class BookingCust {
     private String custEmail;
     private String custName;
 
-    public BookingCust(String shopEmail, String serviceName, String serviceTime , String serviceDate, String custPhone, String custEmail, String custName)
-    {
+    public BookingCust(String shopEmail, String serviceName, String serviceTime, String serviceDate, String custPhone, String custEmail, String custName) {
         this.shopEmail = shopEmail;
         this.serviceName = serviceName;
         this.serviceTime = serviceTime;

@@ -34,59 +34,59 @@
             android:orientation="vertical">
 
             <EditText
-                android:inputType="textPersonName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginTop="16dp"
                 android:id="@+id/signup_cust_name"
-                android:maxLines="1"
-                android:hint="@string/signup_enter_cust_name"/>
-
-            <EditText
-                android:inputType="textEmailAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:layout_weight="1"
+                android:hint="@string/signup_enter_cust_name"
+                android:inputType="textPersonName"
+                android:maxLines="1"/>
+
+            <EditText
                 android:id="@+id/signup_cust_email"
-                android:maxLines="1"
-                android:hint="@string/signup_enter_email"/>
-
-            <EditText
-                android:inputType="textPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:hint="@string/signup_enter_email"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"/>
+
+            <EditText
                 android:id="@+id/signup_cust_pass"
-                android:maxLines="1"
-                android:hint="@string/signup_enter_password_cust"/>
-
-            <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:hint="@string/signup_enter_password_cust"
+                android:inputType="textPassword"
+                android:maxLines="1"/>
+
+            <EditText
                 android:id="@+id/signup_cust_phone"
-                android:maxLines="1"
-                android:inputType="phone"
-                android:hint="@string/signup_enter_cust_phone_no"/>
-
-
-            <EditText
-                android:inputType="textPostalAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:hint="@string/signup_enter_cust_phone_no"
+                android:inputType="phone"
+                android:maxLines="1"/>
+
+
+            <EditText
                 android:id="@+id/signup_cust_address"
-                android:maxLines="1"
-                android:hint="@string/signup_enter_cust_address"/>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="@string/signup_enter_cust_address"
+                android:inputType="textPostalAddress"
+                android:maxLines="1"/>
 
             <RadioGroup
+                android:id="@+id/genderRadioGroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:layout_weight="1"
-                android:id="@+id/genderRadioGroup"
-                android:orientation="horizontal"
-                android:layout_marginTop="16dp">
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -97,10 +97,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/male_label_text"/>
+
                 <android.support.v7.widget.AppCompatRadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/female_label_text"/>
+
                 <android.support.v7.widget.AppCompatRadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -110,13 +112,13 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="16dp">
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
 
                 <CheckBox
                     android:id="@+id/acceptTC"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -129,10 +131,10 @@
                 android:id="@+id/signup_cust_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
-                android:layout_marginLeft="40dp"
                 android:layout_marginEnd="40dp"
+                android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
+                android:layout_marginStart="40dp"
                 android:background="@drawable/signup_button_cust"
                 android:text="@string/sign_up_cust_button"
                 android:textColor="@color/white"/>

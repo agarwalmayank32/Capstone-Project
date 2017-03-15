@@ -5,31 +5,31 @@
         <item
             android:id="@+id/shop_todaySchedule"
             android:icon="@drawable/ic_home"
-            android:title="@string/today_s_schedule_option_drawer" />
+            android:title="@string/today_s_schedule_option_drawer"/>
         <item
             android:id="@+id/shop_myBooking"
             android:icon="@drawable/ic_booking"
-            android:title="@string/my_bookings_option_drawer" />
+            android:title="@string/my_bookings_option_drawer"/>
         <item
             android:id="@+id/shop_myemployee"
             android:icon="@drawable/ic_action_users"
-            android:title="@string/my_employees_option_drawer" />
+            android:title="@string/my_employees_option_drawer"/>
         <item
             android:id="@+id/shop_services"
             android:icon="@drawable/ic_service"
-            android:title="@string/services_option_drawer" />
+            android:title="@string/services_option_drawer"/>
         <item
             android:id="@+id/shop_details"
             android:icon="@drawable/ic_shop_detail"
-            android:title="@string/shop_details_option_drawer" />
+            android:title="@string/shop_details_option_drawer"/>
         <item
             android:id="@+id/about"
             android:icon="@drawable/ic_about"
-            android:title="@string/about_option_drawer" />
+            android:title="@string/about_option_drawer"/>
         <item
             android:id="@+id/contact"
             android:icon="@drawable/ic_phone_in_talk"
-            android:title="@string/contact_us_option_drawer" />
+            android:title="@string/contact_us_option_drawer"/>
     </group>
 
 </menu>

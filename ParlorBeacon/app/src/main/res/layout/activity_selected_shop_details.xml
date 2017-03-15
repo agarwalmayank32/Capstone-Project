@@ -19,9 +19,9 @@
         android:id="@+id/selectedShopDetailLL"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_below="@+id/shopNameSelected"
-        android:layout_marginTop="@dimen/activity_vertical_margin">
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/shopkeeperNameSelected"
@@ -74,12 +74,12 @@
     </LinearLayout>
 
     <Button
-        android:text="@string/book_now_button_text"
+        android:id="@+id/bookNowButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/bookNowButton"
         android:layout_below="@+id/selectedShopDetailLL"
-        android:onClick="book"/>
+        android:layout_centerHorizontal="true"
+        android:onClick="book"
+        android:text="@string/book_now_button_text"/>
 
 </RelativeLayout>

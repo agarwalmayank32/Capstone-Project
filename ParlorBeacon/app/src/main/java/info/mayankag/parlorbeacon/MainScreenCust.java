@@ -39,9 +39,9 @@ import java.util.Map;
 
 public class MainScreenCust extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    private MaterialSearchView searchView;
     ListView serviceListView;
     ArrayList<String> services;
+    private MaterialSearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +62,7 @@ public class MainScreenCust extends AppCompatActivity implements NavigationView.
         navigationView.setItemIconTintList(null);
 
         services = new ArrayList<>();
-        serviceListView = (ListView)findViewById(R.id.selectService);
+        serviceListView = (ListView) findViewById(R.id.selectService);
         fetchServices();
 
         searchView = (MaterialSearchView) findViewById(R.id.search_view);
@@ -71,8 +71,8 @@ public class MainScreenCust extends AppCompatActivity implements NavigationView.
         searchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                Intent intent = new Intent(MainScreenCust.this,SearchActivityCust.class);
-                intent.putExtra("Key",query);
+                Intent intent = new Intent(MainScreenCust.this, SearchActivityCust.class);
+                intent.putExtra("Key", query);
                 startActivity(intent);
                 return false;
             }
@@ -94,8 +94,7 @@ public class MainScreenCust extends AppCompatActivity implements NavigationView.
         });
     }
 
-    void fetchServices()
-    {
+    void fetchServices() {
         JSONObject params = new JSONObject();
         try {
             params.put("custemail", UtilsCust.loadCustEmail(this));
@@ -103,17 +102,17 @@ public class MainScreenCust extends AppCompatActivity implements NavigationView.
             e.printStackTrace();
         }
 
-        String fetch_all_services_url = getResources().getString(R.string.fetch_all_services_url) ;
+        String fetch_all_services_url = getResources().getString(R.string.fetch_all_services_url);
 
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, fetch_all_services_url,params, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, fetch_all_services_url, params, new Response.Listener<JSONObject>() {
             @SuppressLint("SetTextI18n")
             @Override
             public void onResponse(JSONObject response) {
                 services.clear();
                 try {
-                    JSONArray detail=response.getJSONArray("info");
+                    JSONArray detail = response.getJSONArray("info");
 
-                    if(detail.length()>0) {
+                    if (detail.length() > 0) {
                         for (int i = 0; i < detail.length(); i++) {
                             JSONObject singledetail = detail.getJSONObject(i);
 
@@ -124,14 +123,13 @@ public class MainScreenCust extends AppCompatActivity implements NavigationView.
                         serviceListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             @Override
                             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                                Intent intent = new Intent(MainScreenCust.this,SearchActivityCust.class);
-                                intent.putExtra("Key",services.get(position));
+                                Intent intent = new Intent(MainScreenCust.this, SearchActivityCust.class);
+                                intent.putExtra("Key", services.get(position));
                                 startActivity(intent);
                             }
                         });
                     }
-                }
-                catch (JSONException e) {
+                } catch (JSONException e) {
                     Toast.makeText(MainScreenCust.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
                 }
@@ -159,7 +157,7 @@ public class MainScreenCust extends AppCompatActivity implements NavigationView.
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        } else if(searchView.isSearchOpen()) {
+        } else if (searchView.isSearchOpen()) {
             searchView.closeSearch();
         } else
             super.onBackPressed();
@@ -194,7 +192,7 @@ public class MainScreenCust extends AppCompatActivity implements NavigationView.
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        UtilsCust.onNaviationItemSelected(this,item);
+        UtilsCust.onNaviationItemSelected(this, item);
         return true;
     }
 }

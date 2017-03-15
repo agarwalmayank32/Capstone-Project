@@ -6,8 +6,7 @@ public class Service {
     private String Duration;
     private String Type;
 
-    public Service(String name, String duration, String type)
-    {
+    public Service(String name, String duration, String type) {
         Name = name;
         Duration = duration;
         Type = type;
@@ -17,20 +16,20 @@ public class Service {
         return Name;
     }
 
-    public String getDuration() {
-        return Duration;
-    }
-
-    public String getType() {
-        return Type;
-    }
-
     public void setName(String name) {
         Name = name;
     }
 
+    public String getDuration() {
+        return Duration;
+    }
+
     public void setDuration(String duration) {
         Duration = duration;
+    }
+
+    public String getType() {
+        return Type;
     }
 
     public void setType(String type) {

@@ -34,8 +34,7 @@ import com.android.volley.toolbox.Volley;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SignUpCust extends DialogFragment
-{
+public class SignUpCust extends DialogFragment {
     private EditText custemailText;
     private EditText custpassText;
     private EditText custNameText;
@@ -47,7 +46,7 @@ public class SignUpCust extends DialogFragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View v = inflater.inflate(R.layout.signup_cust, container, false);
-        Toolbar toolbar = (Toolbar)v.findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) v.findViewById(R.id.toolbar);
         toolbar.setTitle("Signup");
 
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
@@ -60,15 +59,15 @@ public class SignUpCust extends DialogFragment
         }
         setHasOptionsMenu(true);
 
-        custNameText = (EditText)v.findViewById(R.id.signup_cust_name);
-        custemailText = (EditText)v.findViewById(R.id.signup_cust_email);
-        custpassText = (EditText)v.findViewById(R.id.signup_cust_pass);
-        custPhoneText = (EditText)v.findViewById(R.id.signup_cust_phone);
-        custAddressText = (EditText)v.findViewById(R.id.signup_cust_address);
+        custNameText = (EditText) v.findViewById(R.id.signup_cust_name);
+        custemailText = (EditText) v.findViewById(R.id.signup_cust_email);
+        custpassText = (EditText) v.findViewById(R.id.signup_cust_pass);
+        custPhoneText = (EditText) v.findViewById(R.id.signup_cust_phone);
+        custAddressText = (EditText) v.findViewById(R.id.signup_cust_address);
 
-        genderRadioGroup = (RadioGroup)v.findViewById(R.id.genderRadioGroup);
+        genderRadioGroup = (RadioGroup) v.findViewById(R.id.genderRadioGroup);
 
-        agree = (CheckBox)v.findViewById(R.id.acceptTC);
+        agree = (CheckBox) v.findViewById(R.id.acceptTC);
         Button signup = (Button) v.findViewById(R.id.signup_cust_button);
 
         signup.setOnClickListener(new View.OnClickListener() {
@@ -81,8 +80,7 @@ public class SignUpCust extends DialogFragment
         return v;
     }
 
-    private void signup(View v)
-    {
+    private void signup(View v) {
         if (!UtilsCust.isNetworkAvailable(getActivity())) {
             UtilsCust.NetworkToast(getActivity());
         } else {
@@ -97,15 +95,15 @@ public class SignUpCust extends DialogFragment
             final String custgender = genderRadioButton.getText().toString();
 
             if (custname.equals("") || custemail.equals("") || custpass.equals("") || custphone.equals("") || custaddr.equals("") || custgender.equals("")) {
-                UtilsCust.ShortToast(getActivity(), "Please enter all the Details");
+                UtilsCust.ShortToast(getActivity(), getString(R.string.enter_all_details_text));
             } else if (!agree.isChecked()) {
-                UtilsCust.ShortToast(getActivity(), "Please agree with Terms and Conditions");
+                UtilsCust.ShortToast(getActivity(), getString(R.string.terms_and_conditions_text));
             } else {
                 if (!custemail.contains("@") && !custemail.contains(".com")) {
-                    UtilsCust.ShortToast(getActivity(), "Please enter a valid email address");
+                    UtilsCust.ShortToast(getActivity(), getString(R.string.valid_email_text));
                 } else {
                     if (!(custpass.length() > 8)) {
-                        UtilsCust.ShortToast(getActivity(), "Please Enter Password greater than 8 character");
+                        UtilsCust.ShortToast(getActivity(), getString(R.string.valid_password_text));
                     } else {
                         String signup_url = getResources().getString(R.string.signup_cust_url);
                         final ProgressDialog progressDialog = ProgressDialog.show(getActivity(), "Signing Up", "Please Wait", true, true);
@@ -116,27 +114,26 @@ public class SignUpCust extends DialogFragment
                                 try {
 
                                     if (response.equalsIgnoreCase(String.valueOf(0))) {
-                                        UtilsCust.saveCustEmail(custemail,getActivity());
-                                        UtilsCust.saveCustName(custname,getActivity());
+                                        UtilsCust.saveCustEmail(custemail, getActivity());
+                                        UtilsCust.saveCustName(custname, getActivity());
                                         startActivity(new Intent(getActivity(), MainScreenCust.class));
                                         getActivity().finish();
                                     } else if (response.equalsIgnoreCase(String.valueOf(1))) {
-                                        UtilsCust.ShortToast(getActivity(), "Sorry You have Already Registered Yet");
+                                        UtilsCust.ShortToast(getActivity(), getString(R.string.already_registered_text));
                                     } else if (response.equalsIgnoreCase(String.valueOf(2))) {
-                                        UtilsCust.ShortToast(getActivity(), "Something missing");
-                                    } else
-                                    {
+                                        UtilsCust.ShortToast(getActivity(), getString(R.string.error_text));
+                                    } else {
                                         UtilsCust.ShortToast(getActivity(), response);
                                     }
                                 } catch (Exception e) {
-                                    UtilsCust.ShortToast(getActivity(), "Error");
+                                    UtilsCust.ShortToast(getActivity(), getString(R.string.error1_text));
                                 }
                             }
                         }, new Response.ErrorListener() {
                             @Override
                             public void onErrorResponse(VolleyError error) {
                                 progressDialog.dismiss();
-                                UtilsCust.ShortToast(getActivity(), error.getMessage());
+                                    UtilsCust.ShortToast(getActivity(), error.getMessage());
                             }
                         }) {
                             @Override

@@ -45,10 +45,10 @@
             android:id="@+id/bookingDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:focusable="false"
             android:hint="@string/date_hint_booking_cust"
             android:inputType="date"
             android:onClick="bookingDateSelect"
-            android:focusable="false"
             />
 
     </LinearLayout>
@@ -56,9 +56,9 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/book_button_booking_cust"
         android:layout_below="@+id/bookingLL"
         android:layout_centerHorizontal="true"
-        android:onClick="book"/>
+        android:onClick="book"
+        android:text="@string/book_button_booking_cust"/>
 
 </RelativeLayout>

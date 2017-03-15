@@ -23,9 +23,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
-import info.mayankag.parlorbeacon.Adapter.BookingListAdapter;
-import info.mayankag.parlorbeacon.Models.Booking;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -33,6 +30,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
+import info.mayankag.parlorbeacon.Adapter.BookingListAdapter;
+import info.mayankag.parlorbeacon.Models.Booking;
 
 public class MyBookingsShop extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -46,7 +46,7 @@ public class MyBookingsShop extends AppCompatActivity implements NavigationView.
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        bookingListViewShop = (ListView)findViewById(R.id.bookingListViewShop);
+        bookingListViewShop = (ListView) findViewById(R.id.bookingListViewShop);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -62,15 +62,12 @@ public class MyBookingsShop extends AppCompatActivity implements NavigationView.
         bookings = new ArrayList<>();
     }
 
-    private void bookingListSetup()
-    {
+    private void bookingListSetup() {
 
-        final TextView noBookingDoneText = (TextView)findViewById(R.id.noBookingDoneText);
-        if(!UtilsShop.isNetworkAvailable(this))
-        {
+        final TextView noBookingDoneText = (TextView) findViewById(R.id.noBookingDoneText);
+        if (!UtilsShop.isNetworkAvailable(this)) {
             UtilsShop.NetworkToast(this);
-        }
-        else {
+        } else {
             String getBookingDetails_url = getResources().getString(R.string.getBookingDetails_url);
 
             JSONObject params = new JSONObject();
@@ -89,7 +86,6 @@ public class MyBookingsShop extends AppCompatActivity implements NavigationView.
                         String custName, custEmail, serviceName, serviceTime, serviceDate, serviceStatus;
 
 
-
                         if (detail.length() > 0) {
                             noBookingDoneText.setVisibility(View.GONE);
                             bookingListViewShop.setVisibility(View.VISIBLE);
@@ -105,10 +101,9 @@ public class MyBookingsShop extends AppCompatActivity implements NavigationView.
 
                                 bookings.add(new Booking(custName, custEmail, serviceName, serviceTime, serviceDate, serviceStatus));
                             }
-                            BookingListAdapter adapter = new BookingListAdapter(MyBookingsShop.this,bookings);
+                            BookingListAdapter adapter = new BookingListAdapter(MyBookingsShop.this, bookings);
                             bookingListViewShop.setAdapter(adapter);
-                        }
-                        else {
+                        } else {
                             noBookingDoneText.setVisibility(View.VISIBLE);
                             noBookingDoneText.setText("No Booking done yet");
                             bookingListViewShop.setVisibility(View.GONE);
@@ -150,7 +145,7 @@ public class MyBookingsShop extends AppCompatActivity implements NavigationView.
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        UtilsShop.onNaviationItemSelectedShop(this,item);
+        UtilsShop.onNaviationItemSelectedShop(this, item);
         return true;
     }
 }

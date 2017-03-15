@@ -33,15 +33,14 @@ import java.io.FileOutputStream;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LoginCust extends DialogFragment
-{
+public class LoginCust extends DialogFragment {
     private EditText emailText;
     private EditText passText;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.login_cust, container, false);
-        Toolbar toolbar = (Toolbar)v.findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) v.findViewById(R.id.toolbar);
         toolbar.setTitle("Login");
 
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
@@ -53,8 +52,8 @@ public class LoginCust extends DialogFragment
         }
         setHasOptionsMenu(true);
 
-        emailText = (EditText)v.findViewById(R.id.login_cust_email);
-        passText = (EditText)v.findViewById(R.id.login_cust_password);
+        emailText = (EditText) v.findViewById(R.id.login_cust_email);
+        passText = (EditText) v.findViewById(R.id.login_cust_password);
         Button login = (Button) v.findViewById(R.id.login_cust_button);
 
         login.setOnClickListener(new View.OnClickListener() {
@@ -86,9 +85,9 @@ public class LoginCust extends DialogFragment
                                 startActivity(new Intent(getActivity(), MainScreenCust.class));
                                 getActivity().finish();
                             } else if (response.equalsIgnoreCase(String.valueOf(1))) {
-                                UtilsCust.ShortToast(getActivity(), "Your Request has not been accepted please wait.");
+                                UtilsCust.ShortToast(getActivity(), getString(R.string.request_accepted_text));
                             } else if (response.equalsIgnoreCase(String.valueOf(2))) {
-                                UtilsCust.ShortToast(getActivity(), "Sorry You haven't Registered Yet");
+                                UtilsCust.ShortToast(getActivity(), getString(R.string.not_registered_text));
                             }
                         } catch (Exception e) {
                             UtilsCust.ShortToast(getActivity(), e.getMessage());
@@ -98,7 +97,7 @@ public class LoginCust extends DialogFragment
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         loading.dismiss();
-                        UtilsCust.ShortToast(getActivity(),error.getMessage());
+                        UtilsCust.ShortToast(getActivity(), error.getMessage());
                     }
                 }) {
                     @Override
@@ -117,28 +116,23 @@ public class LoginCust extends DialogFragment
         }
     }
 
-    private boolean validateForm(String email, String password)
-    {
-        if(!(email.contains("@") && email.contains(".com"))) {
-            UtilsCust.ShortToast(getActivity(),getString(R.string.invalid_email_text_cust));
+    private boolean validateForm(String email, String password) {
+        if (!(email.contains("@") && email.contains(".com"))) {
+            UtilsCust.ShortToast(getActivity(), getString(R.string.invalid_email_text_cust));
             return false;
-        }
-        else if(password.length()<8) {
-            UtilsCust.ShortToast(getActivity(),getString(R.string.invalid_password_text_cust));
+        } else if (password.length() < 8) {
+            UtilsCust.ShortToast(getActivity(), getString(R.string.invalid_password_text_cust));
             return false;
-        }
-        else {
+        } else {
             return true;
         }
     }
 
-    private void saveNameCust()
-    {
+    private void saveNameCust() {
 
-        if(!UtilsCust.isNetworkAvailable(getActivity())) {
+        if (!UtilsCust.isNetworkAvailable(getActivity())) {
             UtilsCust.NetworkToast(getActivity());
-        }
-        else {
+        } else {
             String login_name_url = getResources().getString(R.string.login_fetch_name_cust_url);
 
             final ProgressDialog loading = ProgressDialog.show(getActivity(), "Loading...", "Fetching Your Name...", false, false);

@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/content_main_activity_shop"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:showIn="@layout/activity_main_shop">
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/content_main_activity_shop"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                tools:showIn="@layout/activity_main_shop">
 
     <ImageView
-        android:contentDescription="@string/logo_contentDescription_mainactivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_above="@+id/MainActivityLinearLayout4"
+        android:layout_centerHorizontal="true"
         android:layout_marginBottom="16dp"
+        android:contentDescription="@string/logo_contentDescription_mainactivity"
         android:src="@drawable/ic_event_seat"/>
 
     <LinearLayout
+        android:id="@+id/MainActivityLinearLayout4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:id="@+id/MainActivityLinearLayout4"
-        android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:orientation="vertical">
 
         <LinearLayout
             android:id="@+id/MainActivityLinearLayout1"
@@ -38,20 +38,20 @@
             tools:ignore="UseCompoundDrawables">
 
             <ImageView
-                android:contentDescription="@string/booking_pic_contentDescription_mainactivity"
-                android:src="@drawable/ic_event"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:contentDescription="@string/booking_pic_contentDescription_mainactivity"
+                android:src="@drawable/ic_event"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/view_bookings_of_services_textview_mainactivity"
-                android:paddingStart="16dp"
-                android:paddingLeft="16dp"
                 android:paddingEnd="0dp"
+                android:paddingLeft="16dp"
                 android:paddingRight="0dp"
+                android:paddingStart="16dp"
+                android:text="@string/view_bookings_of_services_textview_mainactivity"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
 
         </LinearLayout>
@@ -64,20 +64,20 @@
             tools:ignore="UseCompoundDrawables">
 
             <ImageView
-                android:contentDescription="@string/edit_details_pic_contentDescription_mainactivity"
-                android:src="@drawable/ic_edit"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:contentDescription="@string/edit_details_pic_contentDescription_mainactivity"
+                android:src="@drawable/ic_edit"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/edit_shop_and_employee_details_textview_mainactivity"
-                android:paddingStart="16dp"
-                android:paddingLeft="16dp"
                 android:paddingEnd="0dp"
+                android:paddingLeft="16dp"
                 android:paddingRight="0dp"
+                android:paddingStart="16dp"
+                android:text="@string/edit_shop_and_employee_details_textview_mainactivity"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
 
         </LinearLayout>
@@ -90,20 +90,20 @@
             tools:ignore="UseCompoundDrawables">
 
             <ImageView
-                android:contentDescription="@string/upload_pic_contentDescription_mainactivity"
-                android:src="@drawable/ic_file_upload"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:contentDescription="@string/upload_pic_contentDescription_mainactivity"
+                android:src="@drawable/ic_file_upload"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/upload_pictures_of_shop_and_shopkeeper_textview_mainactivity"
-                android:paddingStart="16dp"
-                android:paddingLeft="16dp"
                 android:paddingEnd="0dp"
+                android:paddingLeft="16dp"
                 android:paddingRight="0dp"
+                android:paddingStart="16dp"
+                android:text="@string/upload_pictures_of_shop_and_shopkeeper_textview_mainactivity"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
 
         </LinearLayout>
@@ -120,15 +120,15 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="@string/sign_up_button_mainactivity"
-            android:onClick="onClickShopSignUp"/>
+            android:onClick="onClickShopSignUp"
+            android:text="@string/sign_up_button_mainactivity"/>
 
         <Button
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="@string/log_in_button_mainactivity"
-            android:onClick="onClickShopLogin" />
+            android:onClick="onClickShopLogin"
+            android:text="@string/log_in_button_mainactivity"/>
 
     </LinearLayout>
 

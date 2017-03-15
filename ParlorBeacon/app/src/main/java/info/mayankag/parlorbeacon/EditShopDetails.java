@@ -38,19 +38,18 @@ public class EditShopDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_shop_details);
 
-        shopkeeperNameEdit = (EditText)findViewById(R.id.edit_shop_shopkeeperName);
-        shopkeeperEmailEdit = (EditText)findViewById(R.id.edit_shop_email);
-        shopNameEdit = (EditText)findViewById(R.id.edit_shop_name);
-        shopPhoneEdit = (EditText)findViewById(R.id.edit_shop_phone);
-        shopAddressEdit = (EditText)findViewById(R.id.edit_shop_address);
-        shopCityEdit = (EditText)findViewById(R.id.edit_shop_city);
-        shopZipEdit = (EditText)findViewById(R.id.edit_shop_zip);
-        shopOpenTimeEdit = (EditText)findViewById(R.id.edit_shop_openTime);
-        shopCloseTimeEdit = (EditText)findViewById(R.id.edit_shop_closeTime);
+        shopkeeperNameEdit = (EditText) findViewById(R.id.edit_shop_shopkeeperName);
+        shopkeeperEmailEdit = (EditText) findViewById(R.id.edit_shop_email);
+        shopNameEdit = (EditText) findViewById(R.id.edit_shop_name);
+        shopPhoneEdit = (EditText) findViewById(R.id.edit_shop_phone);
+        shopAddressEdit = (EditText) findViewById(R.id.edit_shop_address);
+        shopCityEdit = (EditText) findViewById(R.id.edit_shop_city);
+        shopZipEdit = (EditText) findViewById(R.id.edit_shop_zip);
+        shopOpenTimeEdit = (EditText) findViewById(R.id.edit_shop_openTime);
+        shopCloseTimeEdit = (EditText) findViewById(R.id.edit_shop_closeTime);
 
         Bundle extra = getIntent().getExtras();
-        if(extra!=null)
-        {
+        if (extra != null) {
             shopkeeperNameEdit.setText(extra.getString("ShopkeeperName"));
             shopkeeperEmailEdit.setText(extra.getString("ShopkeeperEmail"));
             shopNameEdit.setText(extra.getString("ShopName"));
@@ -64,8 +63,7 @@ public class EditShopDetails extends AppCompatActivity {
 
     }
 
-    public void onClickOpenTimeEdit()
-    {
+    public void onClickOpenTimeEdit() {
         Calendar mcurrentTime = Calendar.getInstance();
         int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
         int minute = mcurrentTime.get(Calendar.MINUTE);
@@ -75,11 +73,11 @@ public class EditShopDetails extends AppCompatActivity {
             public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
 
                 String openTime;
-                if(selectedHour>12) {
-                    openTime = String.valueOf(selectedHour-12)+":"+ String.valueOf(selectedMinute) + "PM";
+                if (selectedHour > 12) {
+                    openTime = String.valueOf(selectedHour - 12) + ":" + String.valueOf(selectedMinute) + "PM";
                     shopOpenTimeEdit.setText(openTime);
                 } else {
-                    openTime = String.valueOf(selectedHour)+":"+ String.valueOf(selectedMinute) + "AM";
+                    openTime = String.valueOf(selectedHour) + ":" + String.valueOf(selectedMinute) + "AM";
                     shopOpenTimeEdit.setText(openTime);
                 }
             }
@@ -88,8 +86,7 @@ public class EditShopDetails extends AppCompatActivity {
         mTimePicker.show();
     }
 
-    public void onClickCloseTimeEdit()
-    {
+    public void onClickCloseTimeEdit() {
         Calendar mcurrentTime = Calendar.getInstance();
         int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
         int minute = mcurrentTime.get(Calendar.MINUTE);
@@ -98,11 +95,11 @@ public class EditShopDetails extends AppCompatActivity {
             @Override
             public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
                 String closeTime;
-                if(selectedHour>12) {
-                    closeTime = String.valueOf(selectedHour-12)+":"+ String.valueOf(selectedMinute) + "PM";
+                if (selectedHour > 12) {
+                    closeTime = String.valueOf(selectedHour - 12) + ":" + String.valueOf(selectedMinute) + "PM";
                     shopCloseTimeEdit.setText(closeTime);
                 } else {
-                    closeTime = String.valueOf(selectedHour)+":"+ String.valueOf(selectedMinute) + "AM";
+                    closeTime = String.valueOf(selectedHour) + ":" + String.valueOf(selectedMinute) + "AM";
                     shopCloseTimeEdit.setText(closeTime);
                 }
             }
@@ -111,15 +108,12 @@ public class EditShopDetails extends AppCompatActivity {
         mTimePicker.show();
     }
 
-    public void onClickUpdateDetail()
-    {
-        if(!UtilsShop.isNetworkAvailable(this)) {
+    public void onClickUpdateDetail() {
+        if (!UtilsShop.isNetworkAvailable(this)) {
             UtilsShop.NetworkToast(this);
-        }
-        else
-        {
+        } else {
             String updateDetails_url = getResources().getString(R.string.updateDetails_url);
-            final ProgressDialog progressDialog = ProgressDialog.show(EditShopDetails.this,"Updating","Please Wait",true,true);
+            final ProgressDialog progressDialog = ProgressDialog.show(EditShopDetails.this, "Updating", "Please Wait", true, true);
 
             StringRequest stringRequest = new StringRequest(Request.Method.POST, updateDetails_url, new Response.Listener<String>() {
                 @Override
@@ -127,13 +121,13 @@ public class EditShopDetails extends AppCompatActivity {
                     progressDialog.dismiss();
                     try {
                         if (response.equalsIgnoreCase("success")) {
-                            Toast.makeText(EditShopDetails.this,"Successfully Updated", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(EditShopDetails.this,ShopDetails.class));
+                            Toast.makeText(EditShopDetails.this, "Successfully Updated", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(EditShopDetails.this, ShopDetails.class));
                             finish();
                         } else if (response.equalsIgnoreCase("failed")) {
                             Toast.makeText(EditShopDetails.this, "Sorry Details cannot be updated ", Toast.LENGTH_SHORT).show();
                         } else {
-                            Toast.makeText(EditShopDetails.this,"Error", Toast.LENGTH_LONG).show();
+                            Toast.makeText(EditShopDetails.this, "Error", Toast.LENGTH_LONG).show();
                         }
                     } catch (Exception e) {
                         progressDialog.dismiss();

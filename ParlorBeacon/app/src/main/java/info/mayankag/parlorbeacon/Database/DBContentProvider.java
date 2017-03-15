@@ -18,29 +18,26 @@ import static info.mayankag.parlorbeacon.Database.DBContract.PB_DB_Entry.TABLE_N
 
 public class DBContentProvider extends ContentProvider {
 
-    private SQLiteDatabase db;
-    private DBHelper dbHelper;
-
-    private static final int BOOKINGS=100;
-    private static final int BOOKING_ID=110;
-
-    private static final String AUTHORITY="info.mayankag.parlorbeacon.DBContentProvider";
+    private static final int BOOKINGS = 100;
+    private static final int BOOKING_ID = 110;
+    private static final String AUTHORITY = "info.mayankag.parlorbeacon.DBContentProvider";
     public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + TABLE_NAME);
-
     private static final UriMatcher uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
 
-    static
-    {
+    static {
         uriMatcher.addURI(AUTHORITY, TABLE_NAME, BOOKINGS);
         uriMatcher.addURI(AUTHORITY, TABLE_NAME + "/#", BOOKING_ID);
     }
+
+    private SQLiteDatabase db;
+    private DBHelper dbHelper;
 
     @Override
     public boolean onCreate() {
         dbHelper = new DBHelper(getContext());
 
-        db=dbHelper.getWritableDatabase();
-        return db!=null;
+        db = dbHelper.getWritableDatabase();
+        return db != null;
     }
 
     @SuppressWarnings("ConstantConditions")
@@ -76,7 +73,7 @@ public class DBContentProvider extends ContentProvider {
     @SuppressWarnings("ConstantConditions")
     @Override
     public Uri insert(@NonNull Uri uri, ContentValues contentValues) {
-        long row = db.insert(TABLE_NAME,"",contentValues);
+        long row = db.insert(TABLE_NAME, "", contentValues);
 
         if (row > 0) {
             Uri newUri = ContentUris.withAppendedId(CONTENT_URI, row);
